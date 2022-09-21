@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Politechnika v2\\7 semestr\\Inżynierka\\ids\\ids.csproj": {}
+    "D:\\Politechnika v2\\7 semestr\\PhotoPin\\ids\\ids.csproj": {}
   },
   "projects": {
-    "D:\\Politechnika v2\\7 semestr\\Inżynierka\\ids\\ids.csproj": {
+    "D:\\Politechnika v2\\7 semestr\\PhotoPin\\ids\\ids.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Politechnika v2\\7 semestr\\Inżynierka\\ids\\ids.csproj",
+        "projectUniqueName": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\ids\\ids.csproj",
         "projectName": "ids",
-        "projectPath": "D:\\Politechnika v2\\7 semestr\\Inżynierka\\ids\\ids.csproj",
+        "projectPath": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\ids\\ids.csproj",
         "packagesPath": "C:\\Users\\iammi\\.nuget\\packages\\",
-        "outputPath": "D:\\Politechnika v2\\7 semestr\\Inżynierka\\ids\\obj\\",
+        "outputPath": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\ids\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -64,6 +64,10 @@
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.0, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",

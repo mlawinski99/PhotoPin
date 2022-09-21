@@ -37,7 +37,7 @@ namespace ids
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(connectionString, 
+                options.UseSqlServer(connectionString, 
                     sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
 
             services.AddIdentity<IdentityUser, IdentityRole>()
@@ -47,12 +47,12 @@ namespace ids
                 .AddAspNetIdentity<IdentityUser>()
                 .AddConfigurationStore(options =>
                 {
-                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString, 
+                    options.ConfigureDbContext = builder => builder.UseSqlServer(connectionString, 
                         opt => opt.MigrationsAssembly(migrationsAssembly));
                 })
                 .AddOperationalStore(options =>
                 {
-                    options.ConfigureDbContext = builder => builder.UseSqlite(connectionString, 
+                    options.ConfigureDbContext = builder => builder.UseSqlServer(connectionString, 
                         opt => opt.MigrationsAssembly(migrationsAssembly));
                 })
                 .AddDeveloperSigningCredential();

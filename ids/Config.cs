@@ -86,7 +86,7 @@ namespace Ids
     {
       new ApiResource("weatherapi")
       {
-        Scopes = new List<string> {"weatherapi.read", "weatherapi.write"},
+        Scopes = new List<string> { "weatherapi.read", "weatherapi.write"},
         ApiSecrets = new List<Secret> {new Secret("ScopeSecret".Sha256())},
         UserClaims = new List<string> {"role"}
       }
@@ -104,7 +104,7 @@ namespace Ids
           AllowedGrantTypes = GrantTypes.ClientCredentials,
           ClientSecrets = {new Secret("SuperSecretPassword".Sha256())},
 
-          AllowedScopes = {"weatherapi.read", "weatherapi.write"}
+          AllowedScopes = { "weatherapi.read", "weatherapi.write" }
         },
 
         // interactive client using code flow + pkce
@@ -114,17 +114,65 @@ namespace Ids
           ClientSecrets = {new Secret("SuperSecretPassword".Sha256())},
 
           AllowedGrantTypes = GrantTypes.Code,
-
           RedirectUris = {"https://localhost:5444/signin-oidc"},
           FrontChannelLogoutUri = "https://localhost:5444/signout-oidc",
           PostLogoutRedirectUris = {"https://localhost:5444/signout-callback-oidc"},
-
+          AllowAccessTokensViaBrowser = true,
           AllowOfflineAccess = true,
           AllowedScopes = {"openid", "profile", "weatherapi.read"},
           RequirePkce = true,
           RequireConsent = true,
           AllowPlainTextPkce = false
         },
+
+        new Client
+        {
+          ClientName = "Postman",
+          AllowOfflineAccess = true,
+          AllowedScopes = new []
+          {
+              IdentityServerConstants.StandardScopes.OpenId,
+              IdentityServerConstants.StandardScopes.Profile,
+              "roles",
+              "weatherapi"
+          },
+          //ClientSecrets = {new Secret("SuperSecretPassword".Sha256())},
+
+        //  AllowedGrantTypes = GrantTypes.Code,
+          RedirectUris = new [] 
+          {
+              "https://getpostman.com/oauth2/callback"
+          },
+          Enabled = true,
+          ClientId = "client",
+          ClientSecrets = {new Secret("SuperSecretPassword".Sha256())},
+          FrontChannelLogoutUri = "https://localhost:5444/signout-oidc",
+          PostLogoutRedirectUris = {"https://localhost:5444/signout-callback-oidc"},
+          ClientUri = null,
+          AllowedGrantTypes = new []
+          {
+              GrantType.ResourceOwnerPassword
+          },
+          RequirePkce = true,
+          RequireConsent = true,
+          AllowPlainTextPkce = false
+        },
+        new Client
+        {
+            ClientId = "client",
+
+            // no interactive user, use the clientid/secret for authentication
+            AllowedGrantTypes = GrantTypes.ClientCredentials,
+
+            // secret for authentication
+            ClientSecrets =
+            {
+                new Secret("secret".Sha256())
+            },
+
+            // scopes that client has access to
+            AllowedScopes = { "weatherapi" }
+        }
       };
   }
 }

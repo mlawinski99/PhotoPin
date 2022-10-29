@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P9cLBmTyfW9MNqyRtqB/G2qj6jvFNw+STdVqJ47N/zSa3A2UqNYxeUncn8w1j/Oe/iWcAykdYOLnaHygG2iu1g==",
+  "dgSpecHash": "grtVENy8YYRMtpkdt4EJZPsyZ8yetrtuETga9dyDwhR9kKYwDBb2SdbBMIV35mmiKC4gM0KDoIeLOSESVKX+bA==",
   "success": true,
-  "projectFilePath": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\API.csproj",
+  "projectFilePath": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\Post.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\iammi\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\iammi\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

@@ -4,7 +4,9 @@ using API.Data.UserRepo;
 using API.Data.UserRepository;
 using API.Mapping.Dtos.Post;
 using API.Mapping.Dtos.User;
+using API.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -52,6 +54,31 @@ namespace API.Controllers
             return Ok(_mapper.Map<IEnumerable<PostReadDto>>(posts));
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreatePost (PostCreateDto postDto)
+        {
+            var post = _mapper.Map<Post>(postDto);
+           // post.User = User;//ToDo: get id
+            await _postRepository.AddPost(post);
 
+            var createdPost = _mapper.Map<PostReadDto>(post);
+
+            return CreatedAtRoute(nameof(GetPost), 
+                new {
+                id = post.Id
+                }, createdPost);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeletePost(int id)
+        {
+            var post = await _postRepository.GetPostById(id);
+            if (post == null)
+                return NotFound();
+
+            _postRepository.DeletePost(post);
+
+            return NoContent();
+        }
     }
 }

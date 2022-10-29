@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("api/user")]
+    [Route("api/posts")]
     [ApiController]
-    public class PostsController :ControllerBase
+    public class PostsController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly PostRepository _postRepository;
@@ -22,6 +22,7 @@ namespace API.Controllers
             _postRepository = postRepository;
         }
 
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetPost(int id)
         {
             var post = await _postRepository.GetPostById(id);
@@ -31,6 +32,10 @@ namespace API.Controllers
 
             return Ok(_mapper.Map<PostReadDto>(post));
         }
+
+
+        [HttpGet]
+        [Route("/all")]
         public async Task<IActionResult> GetPosts()
         {
             var posts = await _postRepository.GetAllPosts();
@@ -38,6 +43,8 @@ namespace API.Controllers
             return Ok(_mapper.Map<IEnumerable<PostReadDto>>(posts));
         }
 
+        [HttpGet]
+        [Route("/user/{id}")]
         public async Task<IActionResult> GetPostsForUser(int id)
         {
             var posts = await _postRepository.GetPostsForUser(id);

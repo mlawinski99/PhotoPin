@@ -19,6 +19,8 @@ namespace API.Controllers
             _mapper = mapper;
             _userRepository = userRepository;
         }
+
+        [HttpGet]
         public async Task <IActionResult> GetUser(int id)
         {
             var user = await _userRepository.GetUser(id);

@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using API.Data.UserRepository;
+using API.Mapping.Dtos.User;
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
 
@@ -8,10 +11,22 @@ namespace API.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        public async Task <IActionResult> GetUser()
-        {
+        private readonly IMapper _mapper;
+        private readonly UserRepository _userRepository;
 
-            return Ok();
+        public UsersController(IMapper mapper, UserRepository userRepository)
+        {
+            _mapper = mapper;
+            _userRepository = userRepository;
+        }
+        public async Task <IActionResult> GetUser(int id)
+        {
+            var user = await _userRepository.GetUser(id);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(_mapper.Map<UserReadDto>(user));
         }
 
     }

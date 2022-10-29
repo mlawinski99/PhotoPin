@@ -1,4 +1,6 @@
-﻿namespace API.Mapping.Dtos.User
+﻿using API.Mapping.Dtos.Post;
+
+namespace API.Mapping.Dtos.User
 {
     public class UserReadDto
     {

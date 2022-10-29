@@ -16,7 +16,7 @@ namespace API.Data.PostRepository
         public async Task<Post> AddPost(Post post)
         {
             await _dbContext.Posts.AddAsync(post);
-            _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
             return post;
         }
 
@@ -33,14 +33,14 @@ namespace API.Data.PostRepository
                 .ToListAsync();
         }
 
-        public async Task<Post> GetPostById(int id)
+        public async Task<Post?> GetPostById(int id)
         {
             return await _dbContext.Posts
                 .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<List<Post>> GetPostForUser(int id)
+        public async Task<List<Post>> GetPostsForUser(int id)
         {
             return await _dbContext.Posts
                 .AsNoTracking()
@@ -52,7 +52,7 @@ namespace API.Data.PostRepository
         {
             _dbContext.Attach(post);
             _dbContext.Entry(post).State = EntityState.Modified;
-            _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
             return post;
         }
     }

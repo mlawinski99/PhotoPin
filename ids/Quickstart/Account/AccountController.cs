@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
+
 namespace IdentityServerHost.Quickstart.UI
 {
     /// <summary>
@@ -36,19 +37,22 @@ namespace IdentityServerHost.Quickstart.UI
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IEventService _events;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
         public AccountController(
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
             IEventService events,
-            SignInManager<IdentityUser> signInManager)
+            SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager)
         {
             _interaction = interaction;
             _clientStore = clientStore;
             _schemeProvider = schemeProvider;
             _events = events;
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -297,6 +301,32 @@ namespace IdentityServerHost.Quickstart.UI
             };
         }
 
+
+        [HttpGet]
+        public IActionResult Register(string returnUrl)
+        {
+            return View(new RegisterViewModel { ReturnUrl = returnUrl});
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+
+            var user = new IdentityUser(model.Username);
+            user.Email = model.Email;
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if(result.Succeeded)
+            {
+                await _signInManager.SignInAsync(user, false);
+                return Redirect(model.ReturnUrl);
+            }
+
+            return View();
+        }
         private async Task<LoginViewModel> BuildLoginViewModelAsync(LoginInputModel model)
         {
             var vm = await BuildLoginViewModelAsync(model.ReturnUrl);
@@ -367,4 +397,5 @@ namespace IdentityServerHost.Quickstart.UI
             return vm;
         }
     }
+
 }

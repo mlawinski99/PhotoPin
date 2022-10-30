@@ -16,9 +16,9 @@ namespace API.Controllers
     public class PostsController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly PostRepository _postRepository;
+        private readonly IPostRepository _postRepository;
 
-        public PostsController(IMapper mapper, PostRepository postRepository)
+        public PostsController(IMapper mapper, IPostRepository postRepository)
         {
             _mapper = mapper;
             _postRepository = postRepository;
@@ -37,7 +37,7 @@ namespace API.Controllers
 
 
         [HttpGet]
-        [Route("/all")]
+        [Route("api/posts/all")]
         public async Task<IActionResult> GetPosts()
         {
             var posts = await _postRepository.GetAllPosts();
@@ -46,7 +46,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("/user/{id}")]
+        [Route("api/posts/user/{id}")]
         public async Task<IActionResult> GetPostsForUser(int id)
         {
             var posts = await _postRepository.GetPostsForUser(id);
@@ -55,7 +55,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreatePost (PostCreateDto postDto)
+        public async Task<IActionResult> CreatePost([FromForm] PostCreateDto postDto)
         {
             var post = _mapper.Map<Post>(postDto);
            // post.User = User;//ToDo: get id

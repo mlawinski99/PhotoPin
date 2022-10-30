@@ -1,4 +1,5 @@
-﻿using API.Data.UserRepository;
+﻿using API.Data.UserRepo;
+using API.Data.UserRepository;
 using API.Mapping.Dtos.User;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -12,9 +13,9 @@ namespace API.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UsersController(IMapper mapper, UserRepository userRepository)
+        public UsersController(IMapper mapper, IUserRepository userRepository)
         {
             _mapper = mapper;
             _userRepository = userRepository;

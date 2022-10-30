@@ -83,5 +83,10 @@
                 There are no login schemes configured for this request.
             </div>
         }
+
+        <div>
+            <a asp-controller="Account" asp-action="Register"
+               asp-route-returnUrl="@Model.ReturnUrl">Register</a>
+        </div>
     </div>
 </div>

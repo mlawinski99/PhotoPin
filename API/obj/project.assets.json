@@ -2503,9 +2503,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\Post.Api.csproj",
-      "projectName": "Post.Api",
-      "projectPath": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\Post.Api.csproj",
+      "projectUniqueName": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\API.csproj",
+      "projectName": "API",
+      "projectPath": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\API.csproj",
       "packagesPath": "C:\\Users\\iammi\\.nuget\\packages\\",
       "outputPath": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\obj\\",
       "projectStyle": "PackageReference",

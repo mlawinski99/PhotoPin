@@ -367,3 +367,5 @@ D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.csproj.Cop
 D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.pdb
 D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.genruntimeconfig.cache
+D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
+D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll

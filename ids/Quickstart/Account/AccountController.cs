@@ -19,7 +19,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
-
+using ids.RabbitMQ;
+using ids.Quickstart.Account;
 
 namespace IdentityServerHost.Quickstart.UI
 {
@@ -38,6 +39,7 @@ namespace IdentityServerHost.Quickstart.UI
         private readonly IEventService _events;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IEventBus _eventBus;
 
         public AccountController(
             IIdentityServerInteractionService interaction,
@@ -45,7 +47,8 @@ namespace IdentityServerHost.Quickstart.UI
             IAuthenticationSchemeProvider schemeProvider,
             IEventService events,
             SignInManager<IdentityUser> signInManager,
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager,
+            IEventBus eventBus)
         {
             _interaction = interaction;
             _clientStore = clientStore;
@@ -53,6 +56,7 @@ namespace IdentityServerHost.Quickstart.UI
             _events = events;
             _signInManager = signInManager;
             _userManager = userManager;
+            _eventBus = eventBus;
         }
 
         /// <summary>
@@ -321,6 +325,12 @@ namespace IdentityServerHost.Quickstart.UI
 
             if(result.Succeeded)
             {
+                var userModel = new UserPublishViewModel {
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    EventName = "UserCreated"
+                };
+                _eventBus.PublishNewMessage(userModel);
                 await _signInManager.SignInAsync(user, false);
                 return Redirect(model.ReturnUrl);
             }

@@ -3,6 +3,7 @@ using API.Data.PostRepo;
 using API.Data.PostRepository;
 using API.Data.UserRepo;
 using API.Data.UserRepository;
+using API.RabbitMQ;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,8 +24,12 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddHostedService<EventBusSubscriber>();
+builder.Services.AddSingleton<IEventProcessor, EventProcessor>();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
+
 
 var app = builder.Build();
 

@@ -22,7 +22,7 @@ namespace ids.RabbitMQ
             var factory = new ConnectionFactory()
             {
                 HostName = _configuration["RabbitMQHost"],
-               // Port = int.Parse(_configuration["RabbitMQPort"])
+                Port = int.Parse(_configuration["RabbitMQPort"])
             };
 
             try

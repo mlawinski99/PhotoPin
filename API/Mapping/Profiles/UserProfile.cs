@@ -10,6 +10,9 @@ namespace API.Mapping.Profiles
         {
             //source -> dest
             CreateMap<User, UserReadDto>();
+            CreateMap<UserCreatedDto, User>()
+                .ForMember(u => u.ExternalId, u => u.MapFrom(u => u.Id))
+                .ForMember(u => u.Id, opt => opt.Ignore());
         }
     }
 }

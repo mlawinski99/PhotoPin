@@ -1,4 +1,5 @@
 using API.Data;
+using API.Data.CommentRepository;
 using API.Data.PostRepo;
 using API.Data.PostRepository;
 using API.Data.UserRepo;
@@ -27,6 +28,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddHostedService<EventBusSubscriber>();
 builder.Services.AddSingleton<IEventProcessor, EventProcessor>();
 
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 

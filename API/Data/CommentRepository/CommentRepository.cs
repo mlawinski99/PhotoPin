@@ -25,6 +25,11 @@ namespace API.Data.CommentRepository
             _dbContext.SaveChanges();
         }
 
+        public async Task<Comment?> GetCommentById(int id)
+        {
+            return await _dbContext.Comments.FirstOrDefaultAsync(c => c.Id == id);
+        }
+
         public async Task<List<Comment>> GetCommentsForPost(int postId)
         {
             return await _dbContext.Comments

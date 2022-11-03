@@ -8,5 +8,6 @@ namespace API.Data.CommentRepository
         Task<Comment> AddComment(Comment comment);
         Task<Comment> UpdateComment(Comment comment);
         void DeleteComment(Comment comment);
+        Task<Comment> GetCommentById(int id);
     }
 }

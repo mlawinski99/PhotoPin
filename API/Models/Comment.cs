@@ -6,6 +6,7 @@
         public string Text { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
-        public virtual Post Post { get; set; }
+        public int PostId { get; set; }
+        public Post Post { get; set; }
     }
 }

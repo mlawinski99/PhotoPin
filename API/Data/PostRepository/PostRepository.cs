@@ -23,7 +23,7 @@ namespace API.Data.PostRepository
         public void DeletePost(Post post)
         {
             _dbContext.Posts.Remove(post);
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
         }
 
         public async Task<List<Post>> GetAllPosts()

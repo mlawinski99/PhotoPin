@@ -35,7 +35,7 @@ namespace API.Controllers
         public async Task<IActionResult> CreateComment(int postId, CommentCreateDto commentDto)
         {
             var comment = _mapper.Map<Comment>(commentDto);
-             comment.PostId = postId;
+            comment.PostId = postId;
             await _commentRepository.AddComment(comment);
 
           //  var createdPost = _mapper.Map<CommentReadDto>(comment);

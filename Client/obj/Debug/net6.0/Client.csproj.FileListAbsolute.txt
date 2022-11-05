@@ -27,3 +27,10 @@ D:\Politechnika v2\7 semestr\PhotoPin\Client\obj\Debug\net6.0\Client.pdb
 D:\Politechnika v2\7 semestr\PhotoPin\Client\obj\Debug\net6.0\Client.genruntimeconfig.cache
 D:\Politechnika v2\7 semestr\PhotoPin\Client\obj\Debug\net6.0\ref\Client.dll
 D:\Politechnika v2\7 semestr\PhotoPin\Client\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Politechnika v2\7 semestr\PhotoPin\Client\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+D:\Politechnika v2\7 semestr\PhotoPin\Client\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Politechnika v2\7 semestr\PhotoPin\Client\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Politechnika v2\7 semestr\PhotoPin\Client\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Politechnika v2\7 semestr\PhotoPin\Client\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Politechnika v2\7 semestr\PhotoPin\Client\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\Politechnika v2\7 semestr\PhotoPin\Client\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

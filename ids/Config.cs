@@ -1,4 +1,4 @@
-﻿﻿using IdentityServer4.Models;
+﻿using IdentityServer4.Models;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text.Json;
@@ -8,21 +8,21 @@ using IdentityServer4.Test;
 
 namespace Ids
 {
-  public static class Config
-  {
-    public static List<TestUser> Users
+    public static class Config
     {
-      get
-      {
-        var address = new
+        public static List<TestUser> Users
         {
-          street_address = "One Hacker Way",
-          locality = "Heidelberg",
-          postal_code = 69118,
-          country = "Germany"
-        };
+            get
+            {
+                var address = new
+                {
+                    street_address = "One Hacker Way",
+                    locality = "Heidelberg",
+                    postal_code = 69118,
+                    country = "Germany"
+                };
 
-        return new List<TestUser>
+                return new List<TestUser>
         {
           new TestUser
           {
@@ -61,12 +61,12 @@ namespace Ids
             }
           }
         };
-      }
-    }
+            }
+        }
 
-    public static IEnumerable<IdentityResource> IdentityResources =>
-      new []
-      {
+        public static IEnumerable<IdentityResource> IdentityResources =>
+          new[]
+          {
         new IdentityResources.OpenId(),
         new IdentityResources.Profile(),
         new IdentityResource
@@ -74,27 +74,27 @@ namespace Ids
           Name = "role",
           UserClaims = new List<string> {"role"}
         }
-      };
+          };
 
-    public static IEnumerable<ApiScope> ApiScopes =>
-      new []
-      {
+        public static IEnumerable<ApiScope> ApiScopes =>
+          new[]
+          {
         new ApiScope("weatherapi.read"),
         new ApiScope("weatherapi.write"),
-      };
-    public static IEnumerable<ApiResource> ApiResources => new[]
-    {
+          };
+        public static IEnumerable<ApiResource> ApiResources => new[]
+        {
       new ApiResource("weatherapi")
       {
-        Scopes = new List<string> { "weatherapi.read", "weatherapi.write"},
+        Scopes = new List<string> {"weatherapi.read", "weatherapi.write"},
         ApiSecrets = new List<Secret> {new Secret("ScopeSecret".Sha256())},
         UserClaims = new List<string> {"role"}
       }
     };
 
-    public static IEnumerable<Client> Clients =>
-      new[]
-      {
+        public static IEnumerable<Client> Clients =>
+          new[]
+          {
         // m2m client credentials flow client
         new Client
         {
@@ -104,7 +104,7 @@ namespace Ids
           AllowedGrantTypes = GrantTypes.ClientCredentials,
           ClientSecrets = {new Secret("SuperSecretPassword".Sha256())},
 
-          AllowedScopes = { "weatherapi.read", "weatherapi.write" }
+          AllowedScopes = {"weatherapi.read", "weatherapi.write"}
         },
 
         // interactive client using code flow + pkce
@@ -114,65 +114,17 @@ namespace Ids
           ClientSecrets = {new Secret("SuperSecretPassword".Sha256())},
 
           AllowedGrantTypes = GrantTypes.Code,
-          RedirectUris = {"https://localhost:5444/signin-oidc"},
+
+           RedirectUris = {"https://localhost:5444/signin-oidc","https://localhost:7166/signin-oidc"},
           FrontChannelLogoutUri = "https://localhost:5444/signout-oidc",
           PostLogoutRedirectUris = {"https://localhost:5444/signout-callback-oidc"},
-          AllowAccessTokensViaBrowser = true,
+
           AllowOfflineAccess = true,
           AllowedScopes = {"openid", "profile", "weatherapi.read"},
           RequirePkce = true,
           RequireConsent = true,
           AllowPlainTextPkce = false
         },
-
-        new Client
-        {
-          ClientName = "Postman",
-          AllowOfflineAccess = true,
-          AllowedScopes = new []
-          {
-              IdentityServerConstants.StandardScopes.OpenId,
-              IdentityServerConstants.StandardScopes.Profile,
-              "roles",
-              "weatherapi"
-          },
-          //ClientSecrets = {new Secret("SuperSecretPassword".Sha256())},
-
-        //  AllowedGrantTypes = GrantTypes.Code,
-          RedirectUris = new [] 
-          {
-              "https://getpostman.com/oauth2/callback"
-          },
-          Enabled = true,
-          ClientId = "client",
-          ClientSecrets = {new Secret("SuperSecretPassword".Sha256())},
-          FrontChannelLogoutUri = "https://localhost:5444/signout-oidc",
-          PostLogoutRedirectUris = {"https://localhost:5444/signout-callback-oidc"},
-          ClientUri = null,
-          AllowedGrantTypes = new []
-          {
-              GrantType.ResourceOwnerPassword
-          },
-          RequirePkce = true,
-          RequireConsent = true,
-          AllowPlainTextPkce = false
-        },
-        new Client
-        {
-            ClientId = "client",
-
-            // no interactive user, use the clientid/secret for authentication
-            AllowedGrantTypes = GrantTypes.ClientCredentials,
-
-            // secret for authentication
-            ClientSecrets =
-            {
-                new Secret("secret".Sha256())
-            },
-
-            // scopes that client has access to
-            AllowedScopes = { "weatherapi" }
-        }
-      };
-  }
+          };
+    }
 }

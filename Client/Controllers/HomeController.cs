@@ -1,6 +1,7 @@
 ﻿using Client.Models;
 using Client.Services;
 using IdentityModel.Client;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
@@ -30,6 +31,7 @@ namespace Client.Controllers
             return View();
         }
 
+        [Authorize]
         public async Task<IActionResult> TestWeather()
         {
             var weatherList = new List<TestWeather>();

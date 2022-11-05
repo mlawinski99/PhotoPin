@@ -9,6 +9,26 @@ IConfiguration configuration = builder.Configuration;
 builder.Services.Configure<ISConfig>(configuration.GetSection("IS4Config"));
 builder.Services.AddSingleton<ITokenService, TokenService>();
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "cookie";
+    options.DefaultChallengeScheme = "oidc";
+})
+    .AddCookie("cookie")
+    .AddOpenIdConnect("oidc", options =>
+    {
+        options.Authority = configuration["InteractiveIS4Config:Url"];
+        options.ClientId = configuration["InteractiveIS4Config:ClientId"];
+        options.ClientSecret = configuration["InteractiveIS4Config:ClientSecret"];
+
+        options.ResponseType = "code";
+        options.UsePkce = true;
+        options.ResponseMode = "query";
+
+        options.Scope.Add(configuration["InteractiveIS4Config:Scopes:0"]);
+        options.SaveTokens = true;
+    });
+
 var app = builder.Build();
 
 
@@ -25,6 +45,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "c5NKJbUez6WOCyk/0YFY6+QjDii9+ynRzbwF1YQ7fbr/Y4UTU7O+zOrlLCl0Mq8/6pniokwMnNzF2J06Sii2WQ==",
+  "success": true,
+  "projectFilePath": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\Client\\Client.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\iammi\\.nuget\\packages\\identitymodel\\6.0.0\\identitymodel.6.0.0.nupkg.sha512",
+    "C:\\Users\\iammi\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

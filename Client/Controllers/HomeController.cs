@@ -14,11 +14,13 @@ namespace Client.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ITokenService _tokenService;
+        private readonly IServiceProvider _serviceProvider;
 
-        public HomeController(ILogger<HomeController> logger, ITokenService tokenService)
+        public HomeController(ILogger<HomeController> logger, ITokenService tokenService, IServiceProvider serviceProvider)
         {
             _logger = logger;
             _tokenService = tokenService;
+            _serviceProvider = serviceProvider;
         }
 
         public IActionResult Index()
@@ -35,12 +37,18 @@ namespace Client.Controllers
         public async Task<IActionResult> TestWeather()
         {
             var weatherList = new List<TestWeather>();
-            using(var client = new HttpClient())
+            var handler = new HttpClientHandler();
+            handler.ClientCertificateOptions = ClientCertificateOption.Manual;
+            handler.ServerCertificateCustomValidationCallback =
+                (httpRequestMessage, cert, cetChain, policyErrors) =>
+                {
+                    return true;
+                };
+            using (var client = new HttpClient(handler))
             {
                 var tokenResponse = await _tokenService.GetToken("weatherapi.read");
                 client.SetBearerToken(tokenResponse.AccessToken);
-
-                var result = client.GetAsync("https://localhost:7061/WeatherForecast").Result;
+                var result = client.GetAsync("https://localhost:7080/weather").Result;
 
                 if(result.IsSuccessStatusCode)
                 {

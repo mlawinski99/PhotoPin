@@ -1,6 +1,5 @@
-using Client.Services;
-using Microsoft.Extensions.Configuration;
 
+using Client.Services;
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -8,6 +7,7 @@ builder.Services.AddControllersWithViews();
 IConfiguration configuration = builder.Configuration;
 builder.Services.Configure<ISConfig>(configuration.GetSection("IS4Config"));
 builder.Services.AddSingleton<ITokenService, TokenService>();
+
 
 builder.Services.AddAuthentication(options =>
 {

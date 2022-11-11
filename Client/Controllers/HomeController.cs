@@ -25,7 +25,8 @@ namespace Client.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var postList = new List<Post>();
+            return View(postList);
         }
 
         public IActionResult Privacy()

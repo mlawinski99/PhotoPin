@@ -1,8 +1,37 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
+@model List<Post>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<body>
+	<div class="container">
+		<div class="row">
+			<main class="col-md-9">
+				<div class="row">
+					@foreach (var post in Model)
+					{
+						var imagePath = "~/images/" + (post.ImagePath ?? "noimage.jpg");
+						<div class="col-md-4 ">
+							<figure class="card card-product-grid d-flex align-items-start flex-column" style="height: 100%;">
+								<div class="img-wrap mb-auto p-2">
+									<img src="@imagePath" asp-append-version="true" class="img-fluid">
+								</div> <!-- img-wrap.// -->
+								<figcaption class="info-wrap">
+									<div class="fix-height mb-2 p-2">
+										<div class="text-lg-left">@post.UserName</div>
+									</div>
+									<form method="get" class="p-2">
+										<button type="submit" asp-action="Details" asp-route-id="@post.Id" asp-controller="Post" class="btn btn-block btn-dark">
+											View Details
+										</button>
+									</form>
+								</figcaption>
+							</figure>
+						</div> <!-- col.// -->
+					}
+				</div> <!-- row end.// -->
+
+			</main>
+		</div>
+</body>
+</html>

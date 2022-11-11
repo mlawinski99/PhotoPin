@@ -10,25 +10,59 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Client</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+        <div class="navbarCorrector">
+            <nav classname="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand mr-4" asp-area="" asp-controller="Home" asp-action="Index">Antique Shop</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-light btn btn-dark" style="border: none;" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <ul class="navbar-nav ml-auto">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item mr-2">
+                                <a class="nav-link text-light btn btn-dark" style="border: none;" asp-area="" asp-controller="Account" asp-action="GetProfile">My Profile</a>
+                            </li>
+                            <li class="nav-item mr-2">
+                                <a class="nav-link text-light btn btn-dark" style="border: none;" asp-area="" asp-controller="Photos" asp-action="GetFavourites">Favourites</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <form method="post" asp-controller="Account" asp-action="Logout">
+                                    <button type="submit" class="nav-link text-light btn btn-dark" style="border:none;">
+                                        Logout
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item mr-2">
+                                <a class="nav-link text-light btn btn-dark" style="border: 2px;" asp-controller="Account" asp-action="Register">
+                                    Sign up
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light btn btn-dark" style="border:2px;" asp-controller="Account" asp-action="Sign in">
+                                    Login
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -38,7 +72,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Client - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - PhotoPin - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -234,14 +234,6 @@ D:\Politechnika v2\7 semestr\Inżynierka\ids\obj\Debug\netcoreapp3.1\ids.csproj.
 D:\Politechnika v2\7 semestr\Inżynierka\ids\obj\Debug\netcoreapp3.1\ids.dll
 D:\Politechnika v2\7 semestr\Inżynierka\ids\obj\Debug\netcoreapp3.1\ids.pdb
 D:\Politechnika v2\7 semestr\Inżynierka\ids\obj\Debug\netcoreapp3.1\ids.genruntimeconfig.cache
-D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.csproj.AssemblyReference.cache
-D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.GeneratedMSBuildEditorConfig.editorconfig
-D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.AssemblyInfoInputs.cache
-D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.AssemblyInfo.cs
-D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.csproj.CoreCompileInputs.cache
-D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.MvcApplicationPartsAssemblyInfo.cache
-D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.RazorAssemblyInfo.cache
-D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.RazorAssemblyInfo.cs
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\appsettings.json
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\ids.exe
@@ -296,6 +288,7 @@ D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\Microsoft.Iden
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\Serilog.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\Serilog.AspNetCore.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\Serilog.Extensions.Hosting.dll
@@ -316,6 +309,7 @@ D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\System.Identit
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
@@ -336,6 +330,14 @@ D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\runtimes\win-x
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.csproj.AssemblyReference.cache
+D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.GeneratedMSBuildEditorConfig.editorconfig
+D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.AssemblyInfoInputs.cache
+D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.AssemblyInfo.cs
+D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.csproj.CoreCompileInputs.cache
+D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.MvcApplicationPartsAssemblyInfo.cache
+D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.RazorAssemblyInfo.cache
+D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.RazorAssemblyInfo.cs
 D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\staticwebassets\ids.StaticWebAssets.Manifest.cache
 D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.TagHelpers.input.cache
 D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.TagHelpers.output.cache
@@ -367,5 +369,3 @@ D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.csproj.Cop
 D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.dll
 D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.pdb
 D:\Politechnika v2\7 semestr\PhotoPin\ids\obj\Debug\netcoreapp3.1\ids.genruntimeconfig.cache
-D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
-D:\Politechnika v2\7 semestr\PhotoPin\ids\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll

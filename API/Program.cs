@@ -6,6 +6,7 @@ using API.Data.UserRepo;
 using API.Data.UserRepository;
 using API.RabbitMQ;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.Services.AddAuthentication("Bearer")
     {
         options.ApiName = "weatherapi";
         options.Authority = "https://localhost:44397";
+      //  options.TokenValidationParameters = "";
     });
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

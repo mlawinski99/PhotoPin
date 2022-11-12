@@ -1,10 +1,6 @@
+D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\API.exe
 D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\appsettings.Development.json
 D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\appsettings.json
-D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\API.exe
-D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\API.deps.json
-D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\API.runtimeconfig.json
-D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\API.dll
-D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\API.pdb
 D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\AutoMapper.dll
 D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\Humanizer.dll
@@ -29,6 +25,7 @@ D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\Microsoft.IdentityMod
 D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\Microsoft.OpenApi.dll
 D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\RabbitMQ.Client.dll
 D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -65,6 +62,9 @@ D:\Politechnika v2\7 semestr\PhotoPin\API\obj\Debug\net6.0\API.csproj.CopyComple
 D:\Politechnika v2\7 semestr\PhotoPin\API\obj\Debug\net6.0\API.dll
 D:\Politechnika v2\7 semestr\PhotoPin\API\obj\Debug\net6.0\refint\API.dll
 D:\Politechnika v2\7 semestr\PhotoPin\API\obj\Debug\net6.0\API.pdb
+D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\API.deps.json
+D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\API.runtimeconfig.json
+D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\API.dll
+D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\API.pdb
 D:\Politechnika v2\7 semestr\PhotoPin\API\obj\Debug\net6.0\API.genruntimeconfig.cache
 D:\Politechnika v2\7 semestr\PhotoPin\API\obj\Debug\net6.0\ref\API.dll
-D:\Politechnika v2\7 semestr\PhotoPin\API\bin\Debug\net6.0\RabbitMQ.Client.dll

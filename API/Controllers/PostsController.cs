@@ -58,7 +58,8 @@ namespace API.Controllers
         public async Task<IActionResult> CreatePost([FromForm] PostCreateDto postDto)
         {
             var post = _mapper.Map<Post>(postDto);
-            //post.UserId =; ToDo
+
+            //post.User = User.Identity.
             await _postRepository.AddPost(post);
 
             var createdPost = _mapper.Map<PostReadDto>(post);

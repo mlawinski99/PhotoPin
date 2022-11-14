@@ -42,6 +42,7 @@ namespace Client.Controllers
 
 
             var response = await httpClient.PostAsync("/api/posts", multiContent);
+            Console.WriteLine(response.StatusCode);
             return RedirectToAction("Index", "Home");
 
 

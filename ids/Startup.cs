@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ids.RabbitMQ;
+using ids.Services;
 
 namespace ids
 {
@@ -58,7 +59,8 @@ namespace ids
                     options.ConfigureDbContext = builder => builder.UseSqlServer(connectionString, 
                         opt => opt.MigrationsAssembly(migrationsAssembly));
                 })
-                .AddDeveloperSigningCredential();
+                .AddDeveloperSigningCredential()
+                .AddProfileService<AspNetIdentityProfileService>();
             
             services.AddControllersWithViews();
 

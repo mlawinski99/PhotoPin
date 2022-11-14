@@ -1,6 +1,9 @@
+using API.Models;
+using IdentityModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using System.Security.Principal;
 
 namespace API.Controllers
 {
@@ -24,7 +27,16 @@ namespace API.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            // var user = (HttpContext.User.Identity as ClaimsIdentity);
+            var ownerId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            var principal = User.Identity as ClaimsPrincipal;
+           // var claims = principal.FindFirst(ClaimTypes.NameIdentifier);
+
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            // iterate all claims
+            foreach (var claim in claimsIdentity.Claims)
+            {
+                Console.WriteLine(claim.Type + ":" + claim.Value);
+            }
             //Console.WriteLine("Weather");
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

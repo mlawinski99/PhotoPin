@@ -5,19 +5,21 @@ using API.Data.PostRepository;
 using API.Data.UserRepo;
 using API.Data.UserRepository;
 using API.RabbitMQ;
+using IdentityServer4.AccessTokenValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddAuthentication("Bearer")
-    .AddIdentityServerAuthentication("Bearer", options =>
-    {
-        options.ApiName = "weatherapi";
-        options.Authority = "https://localhost:44397";
-      //  options.TokenValidationParameters = "";
-    });
+builder.Services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+               .AddIdentityServerAuthentication(options =>
+               {
+                   options.Authority = "https://localhost:44397";
+                   options.ApiName = "weatherapi";
+                   options.ApiSecret = "ScopeSecret";
+               });
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

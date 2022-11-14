@@ -79,22 +79,26 @@ namespace Ids
         public static IEnumerable<ApiScope> ApiScopes =>
           new[]
           {
-        new ApiScope("weatherapi.read"),
+        new ApiScope{
+            Name = "weatherapi.read",
+            UserClaims = { JwtClaimTypes.Name, JwtClaimTypes.Email }
+        },
         new ApiScope("weatherapi.write"),
           };
         public static IEnumerable<ApiResource> ApiResources => new[]
         {
       new ApiResource("weatherapi")
       {
-        Scopes = new List<string> {"weatherapi.read", "weatherapi.write"},
+        Scopes = new List<string> {"openid", "profile", "weatherapi.read", "weatherapi.write"},
         ApiSecrets = new List<Secret> {new Secret("ScopeSecret".Sha256())},
-        UserClaims = new List<string> {"role"}
+        UserClaims = { JwtClaimTypes.Name, JwtClaimTypes.Email },
       }
     };
 
         public static IEnumerable<Client> Clients =>
           new[]
           {
+              /*
         // m2m client credentials flow client
         new Client
         {
@@ -104,7 +108,7 @@ namespace Ids
           AllowedGrantTypes = GrantTypes.ClientCredentials,
           ClientSecrets = {new Secret("SuperSecretPassword".Sha256())},
 
-          AllowedScopes = {"weatherapi.read", "weatherapi.write"}
+          AllowedScopes = { "openid", "profile", "weatherapi.read", "weatherapi.write"}
         },
 
         // interactive client using code flow + pkce
@@ -120,11 +124,47 @@ namespace Ids
           PostLogoutRedirectUris = {"https://localhost:5444/signout-callback-oidc"},
 
           AllowOfflineAccess = true,
-          AllowedScopes = {"openid", "profile", "weatherapi.read"},
+          AllowedScopes = {IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile, "weatherapi.read"},
           RequirePkce = true,
-          RequireConsent = true,
+          RequireConsent = false,
           AllowPlainTextPkce = false
-        },
+        },*/
+
+               new Client
+                {
+                    AccessTokenType = AccessTokenType.Reference,
+                    AccessTokenLifetime = 120,
+                    AllowOfflineAccess = true,
+                    UpdateAccessTokenClaimsOnRefresh = true,
+                    ClientName = "photoClient",
+                    ClientId = "photoClient",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RedirectUris = new List<string>()
+                    {
+                        "https://localhost:44397/signin-oidc",
+                        "https://localhost:7166/signin-oidc"
+
+                    },
+                    PostLogoutRedirectUris = new List<string>()
+                    {
+                        "https://localhost:44397/signout-callback-oidc"
+                    },
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Address,
+                        "weatherapi.read",
+                        "weatherapi"
+                    },
+                    ClientSecrets =
+                    {
+                        new Secret("SuperSecretPassword".Sha256())
+                    }
+               }
           };
+              
     }
 }

@@ -1,26 +1,23 @@
 ﻿using Client.Models;
-using Client.Services;
-using IdentityModel.Client;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
 namespace Client.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ITokenService _tokenService;
-        private readonly IServiceProvider _serviceProvider;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public HomeController(ILogger<HomeController> logger, ITokenService tokenService, IServiceProvider serviceProvider)
+        
+        public HomeController(ILogger<HomeController> logger, IHttpClientFactory httpClientFactory)
         {
             _logger = logger;
-            _tokenService = tokenService;
-            _serviceProvider = serviceProvider;
+            _httpClientFactory = httpClientFactory;
         }
 
         public IActionResult Index()
@@ -37,30 +34,42 @@ namespace Client.Controllers
         [Authorize]
         public async Task<IActionResult> TestWeather()
         {
-            var weatherList = new List<TestWeather>();
-            var handler = new HttpClientHandler();
-            handler.ClientCertificateOptions = ClientCertificateOption.Manual;
-            handler.ServerCertificateCustomValidationCallback =
-                (httpRequestMessage, cert, cetChain, policyErrors) =>
-                {
-                    return true;
-                };
-            using (var client = new HttpClient(handler))
+            var httpClient = _httpClientFactory.CreateClient("APIClient");
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Get,
+                "/WeatherForecast");
+
+            var response = await httpClient.SendAsync(
+                request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
             {
-                var tokenResponse = await _tokenService.GetToken("weatherapi.read");
-                client.SetBearerToken(tokenResponse.AccessToken);
-                var result = client.GetAsync("https://localhost:7080/weather").Result;
-
-                if(result.IsSuccessStatusCode)
-                {
-                    var model = result.Content.ReadAsStringAsync().Result;
-                    weatherList = JsonConvert.DeserializeObject<List<TestWeather>>(model);
-                    return View(weatherList);
-                }
-
-                throw new Exception("Can't connect to API");
+                var model = await response.Content.ReadAsStringAsync();
+                    return View( JsonConvert.DeserializeObject<List<TestWeather>>(model));
             }
-            
+            else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
+                    response.StatusCode == System.Net.HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("ErrorPage", "Home");
+            }
+
+            throw new Exception("Can't connect to API");
+        }
+        public async Task WriteOutIdentityInformation()
+        {
+            // get the saved identity token
+            var identityToken = await HttpContext
+                .GetTokenAsync(OpenIdConnectParameterNames.IdToken);
+
+            // write it out
+            Debug.WriteLine($"Identity token: {identityToken}");
+
+            // write out the user claims
+            foreach (var claim in User.Claims)
+            {
+                Debug.WriteLine($"Claim type: {claim.Type} - Claim value: {claim.Value}");
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

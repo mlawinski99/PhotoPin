@@ -27,6 +27,11 @@ namespace API.Data.UserRepository
             return null;
         }
 
+        public async Task<User> GetUserByExternalId(string id)
+        {
+            return await _dbContext.Users.FirstOrDefaultAsync(u => u.ExternalId == id);
+        }
+
         public async Task<bool> IsUserExists(string id)
         {
             return await _dbContext.Users.AnyAsync(u => u.ExternalId == id);

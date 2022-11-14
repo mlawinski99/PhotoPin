@@ -7,6 +7,7 @@ namespace API.Data.UserRepo
     {
         Task<bool> IsUserExists(string id);
         Task<User?> GetUser(int id);
+        Task<User> GetUserByExternalId(string id);
         Task<User> AddUser(User user);
     }
 }

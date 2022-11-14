@@ -6,22 +6,31 @@ using API.Mapping.Dtos.Post;
 using API.Mapping.Dtos.User;
 using API.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting.Internal;
+using static System.Net.Mime.MediaTypeNames;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace API.Controllers
 {
     [Route("api/posts")]
     [ApiController]
+    [Authorize]
     public class PostsController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly IPostRepository _postRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public PostsController(IMapper mapper, IPostRepository postRepository)
+        public PostsController(IMapper mapper, IPostRepository postRepository, IUserRepository userRepository, IHostingEnvironment hostingEnvironment)
         {
             _mapper = mapper;
             _postRepository = postRepository;
+            _userRepository = userRepository;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         [HttpGet("{id}")]
@@ -59,7 +68,31 @@ namespace API.Controllers
         {
             var post = _mapper.Map<Post>(postDto);
 
-            //post.User = User.Identity.
+            var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+
+            if (userSub == null)
+                return NotFound();
+
+            var user = await _userRepository.GetUserByExternalId(userSub);
+
+            if (user == null)
+                return NotFound();
+
+            if (postDto.Image == null || postDto.Image.Length == 0)
+                return NotFound();
+
+
+            string imagePath = null;
+            string uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
+            imagePath = Guid.NewGuid().ToString() + "_" + postDto.Image.FileName;
+            string filePath = Path.Combine(uploadFolder, imagePath);
+            postDto.Image.CopyTo(new FileStream(filePath, FileMode.Create));
+
+            post.CreatedDate = DateTime.Now;
+            post.UserId = user.Id;
+            post.User = user;
+            post.ImagePath = imagePath;
+
             await _postRepository.AddPost(post);
 
             var createdPost = _mapper.Map<PostReadDto>(post);

@@ -9,9 +9,11 @@ builder.Services.AddAuthentication()
     .AddJwtBearer("IdentityApiKey", options =>
     {
         options.Authority = "https://localhost:44397";
+        options.Audience = "weatherapi";
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateAudience = false
+            ValidateAudience = false,
+            ValidateIssuer = false
         };
     });
 

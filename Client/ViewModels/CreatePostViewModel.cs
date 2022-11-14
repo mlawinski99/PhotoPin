@@ -2,7 +2,7 @@
 {
     public class CreatePostViewModel
     {
-        public FormFile Image { get; set; }
+        public IFormFile Image { get; set; }
         public string Description { get; set; }
     }
 }

@@ -10,11 +10,10 @@
 				<div class="row">
 					@foreach (var post in Model)
 					{
-						var imagePath = "~/images/" + (post.ImagePath ?? "noimage.jpg");
 						<div class="col-md-4 ">
 							<figure class="card card-product-grid d-flex align-items-start flex-column" style="height: 100%;">
 								<div class="img-wrap mb-auto p-2">
-									<img src="@imagePath" asp-append-version="true" class="img-fluid">
+									<img src="@("https://localhost:7061/images/" + post.ImagePath)" asp-append-version="true" class="img-fluid" style="height:200px;width:200px">
 								</div> <!-- img-wrap.// -->
 								<figcaption class="info-wrap">
 									<div class="fix-height mb-2 p-2">

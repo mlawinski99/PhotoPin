@@ -46,7 +46,7 @@ namespace API.Controllers
 
 
         [HttpGet]
-        [Route("api/posts/all")]
+        [Route("all")]
         public async Task<IActionResult> GetPosts()
         {
             var posts = await _postRepository.GetAllPosts();
@@ -55,7 +55,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("api/posts/user/{id}")]
+        [Route("user/{id}")]
         public async Task<IActionResult> GetPostsForUser(int id)
         {
             var posts = await _postRepository.GetPostsForUser(id);
@@ -82,9 +82,8 @@ namespace API.Controllers
                 return NotFound();
 
 
-            string imagePath = null;
             string uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "images");
-            imagePath = Guid.NewGuid().ToString() + "_" + postDto.Image.FileName;
+            var imagePath = Guid.NewGuid().ToString() + "_" + postDto.Image.FileName;
             string filePath = Path.Combine(uploadFolder, imagePath);
             postDto.Image.CopyTo(new FileStream(filePath, FileMode.Create));
 

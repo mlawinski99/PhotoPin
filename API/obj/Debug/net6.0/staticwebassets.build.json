@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cPVuoumRhKRwDzGKYSvJXit82l+TAu3W6zuQuEu2p7U=",
+  "Hash": "xpum4tajvE2XsFVdvhKn8nMNgzO3SV/Zd9s/tVYao2M=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -15,5 +15,74 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\Images\\149fe87e-7eca-4635-8636-c56c3b167f6d_fenix.png",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "Images/149fe87e-7eca-4635-8636-c56c3b167f6d_fenix.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\149fe87e-7eca-4635-8636-c56c3b167f6d_fenix.png"
+    },
+    {
+      "Identity": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\Images\\4f25423d-c882-4665-8b0c-9289eeffa0e0_fenix.png",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "Images/4f25423d-c882-4665-8b0c-9289eeffa0e0_fenix.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\4f25423d-c882-4665-8b0c-9289eeffa0e0_fenix.png"
+    },
+    {
+      "Identity": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\Images\\55861986-5999-43b5-a4c7-6d69c960ea90_fenix.png",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "Images/55861986-5999-43b5-a4c7-6d69c960ea90_fenix.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\55861986-5999-43b5-a4c7-6d69c960ea90_fenix.png"
+    },
+    {
+      "Identity": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\Images\\742b6d70-84c0-41c9-afa7-1bb28e47c85a_fenix.png",
+      "SourceId": "API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\",
+      "BasePath": "_content/API",
+      "RelativePath": "Images/742b6d70-84c0-41c9-afa7-1bb28e47c85a_fenix.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\742b6d70-84c0-41c9-afa7-1bb28e47c85a_fenix.png"
+    }
+  ]
 }

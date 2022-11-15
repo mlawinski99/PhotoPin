@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Data\FavouritePostsRepository\" />
-    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
 </Project>

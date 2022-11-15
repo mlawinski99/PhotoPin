@@ -29,6 +29,7 @@ namespace API.Data.PostRepository
         public async Task<List<Post>> GetAllPosts()
         {
             return await _dbContext.Posts
+                .Include(p => p.User)
                 .AsNoTracking()
                 .ToListAsync();
         }

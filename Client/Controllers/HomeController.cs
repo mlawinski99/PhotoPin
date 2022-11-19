@@ -78,21 +78,6 @@ namespace Client.Controllers
 
             throw new Exception("Can't connect to API");
         }
-        public async Task WriteOutIdentityInformation()
-        {
-            // get the saved identity token
-            var identityToken = await HttpContext
-                .GetTokenAsync(OpenIdConnectParameterNames.IdToken);
-
-            // write it out
-            Debug.WriteLine($"Identity token: {identityToken}");
-
-            // write out the user claims
-            foreach (var claim in User.Claims)
-            {
-                Debug.WriteLine($"Claim type: {claim.Type} - Claim value: {claim.Value}");
-            }
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

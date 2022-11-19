@@ -1,6 +1,7 @@
 ﻿using Client.Models;
 using Client.ViewModels;
 using IdentityModel.Client;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -9,21 +10,22 @@ using System.Net.Http.Headers;
 
 namespace Client.Controllers
 {
-	public class PostController : Controller
-	{
+   // [Authorize]
+    public class PostController : Controller
+    {
         private readonly IHttpClientFactory _httpClientFactory;
 
         public PostController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
-		[HttpGet]
-		public IActionResult Create()
-		{
-			return View();
-		}
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-		[HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Create(CreatePostViewModel model)
         {
             var httpClient = _httpClientFactory.CreateClient("APIClient");
@@ -44,20 +46,33 @@ namespace Client.Controllers
             var response = await httpClient.PostAsync("/api/posts", multiContent);
             Console.WriteLine(response.StatusCode);
             return RedirectToAction("Index", "Home");
+        }
+        public async Task<IActionResult> Details(int id)
+        {
+            var httpClient = _httpClientFactory.CreateClient("APIClient");
 
+            var request = new HttpRequestMessage(
+                HttpMethod.Get,
+                $"/api/posts/{id}");
 
-            /*
-            using (var client = new HttpClient())
+            var response = await httpClient.SendAsync(
+                request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
             {
-             //   var tokenResponse = await _tokenService.GetToken("weatherapi.read");
-               // client.SetBearerToken(tokenResponse.AccessToken);
-                var result = await client.PostAsJsonAsync("https://localhost:7080/posts", model);
-                if (result.IsSuccessStatusCode)
-                    return View(model);
-
-                throw new Exception("Can't connect to API");
+                var model = await response.Content.ReadAsStringAsync();
+                return View(JsonConvert.DeserializeObject<Post>(model));
             }
-            return View();*/
+            else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
+                    response.StatusCode == System.Net.HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("ErrorPage", "Home");
+            }
+
+            throw new Exception("Can't connect to API");
+
+            //var postList = new List<Post>();
+            //return View(postList);
         }
     }
 }

@@ -137,6 +137,8 @@ namespace Ids
                     AccessTokenLifetime = 120,
                     AllowOfflineAccess = true,
                     UpdateAccessTokenClaimsOnRefresh = true,
+                    RefreshTokenExpiration = TokenExpiration.Absolute,//test
+                    RefreshTokenUsage = TokenUsage.OneTimeOnly, //test
                     ClientName = "photoClient",
                     ClientId = "photoClient",
                     AllowedGrantTypes = GrantTypes.Code,

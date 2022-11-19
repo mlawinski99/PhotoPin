@@ -1,0 +1,58 @@
+﻿@{
+	ViewData["Title"] = "Details";
+}
+
+@model Post
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+	<div class="container shadow-lg rounded" style="margin-top:-20px;">
+		<!-- product -->
+		<div class=" product-wrap product-deatil">
+			<div class="row">
+				<div class="col-md-5 col-sm-12 col-xs-12>
+					<div class="product-image">
+								@{
+									var imagePath = "~/images/" + (Model.ImagePath);
+											<!-- Slide 1 -->
+											<div class="item justify-content-center active">
+												<img src="@("https://localhost:7061/images/" + Model.ImagePath)" asp-append-version="true" class="mx-auto" alt="" />
+											</div>
+								}
+					</div>
+				</div>
+					<hr />
+				<div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12 ">
+					<h2 class="name">
+						Posted by: @Model.UserName
+					</h2>
+					<hr />
+					<h3 class="price-container">
+						@Model.Description
+					</h3>
+					<hr />
+					<div class="description description-tabs">
+						<div class="tab-pane fade" id="more-information">
+							<br />
+							<p class="text-justify">@Model.Description</p>
+						</div>
+					</div>
+				</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end product -->
+	</div>
+	<script type="text/javascript">
+	</script>
+</body>
+</html>

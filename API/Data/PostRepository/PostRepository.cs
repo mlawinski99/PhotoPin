@@ -37,6 +37,8 @@ namespace API.Data.PostRepository
         public async Task<Post?> GetPostById(int id)
         {
             return await _dbContext.Posts
+                .Include(p => p.User)
+                .Include(p => p.Comments)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Id == id);
         }

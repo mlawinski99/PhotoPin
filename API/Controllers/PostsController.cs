@@ -55,10 +55,21 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("user/{id}")]
-        public async Task<IActionResult> GetPostsForUser(int id)
+        [Route("user")]
+        public async Task<IActionResult> GetPostsForUser()
         {
-            var posts = await _postRepository.GetPostsForUser(id);
+
+            var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+
+            if (userSub == null)
+                return NotFound();
+
+            var user = await _userRepository.GetUserByExternalId(userSub);
+
+            if (user == null)
+                return NotFound();
+
+            var posts = await _postRepository.GetPostsForUser(user.Id);
 
             return Ok(_mapper.Map<IEnumerable<PostReadDto>>(posts));
         }

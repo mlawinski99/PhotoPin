@@ -45,7 +45,7 @@ namespace API.Data.PostRepository
         {
             return await _dbContext.Posts
                 .AsNoTracking()
-                .Where(p => p.Id == id)
+                .Where(p => p.UserId == id)
                 .ToListAsync();
         }
 

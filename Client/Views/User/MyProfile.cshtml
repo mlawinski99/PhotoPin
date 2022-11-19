@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+	ViewData["Title"] = "Home";
 }
 @model List<Post>
 
@@ -7,14 +7,14 @@
 	<div class="container">
 		<div class="row">
 			<main class="col-md-9">
-				<div class="row ">
+				<div class="row style="height: 100%; width: 50%;">
 					@foreach (var post in Model)
 					{
 						<div class="col-md-4 ">
 							<figure class="card card-product-grid d-flex align-items-start flex-column" style="height: 100%;">
 								<div class="fix-height mb-2 p-2">
-										<div class="text-lg-left">Posted by: @post.UserName</div>
-									</div>
+									<div class="text-lg-left">Posted by: @post.UserName</div>
+								</div>
 								<div class="img-wrap mb-auto p-2">
 									<img src="@("https://localhost:7061/images/" + post.ImagePath)" asp-append-version="true" class="img-fluid" style="height:190px;width:280px">
 								</div> <!-- img-wrap.// -->

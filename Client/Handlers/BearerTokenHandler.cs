@@ -72,7 +72,7 @@ namespace Client.Handlers
             {
                 Address = discoveryReponse.TokenEndpoint,
                 ClientId = "photoClient",
-                ClientSecret = "secret",
+                ClientSecret = "SuperSecretPassword",
             });
 
             var refreshResponse = await tokenClient.RequestRefreshTokenAsync(refreshToken);

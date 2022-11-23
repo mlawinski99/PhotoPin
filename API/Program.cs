@@ -1,5 +1,6 @@
 using API.Data;
 using API.Data.CommentRepository;
+using API.Data.FavouritePostsRepository;
 using API.Data.PostRepo;
 using API.Data.PostRepository;
 using API.Data.UserRepo;
@@ -35,6 +36,7 @@ builder.Services.AddSingleton<IEventProcessor, EventProcessor>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<IFavouritePostsRepository, FavouritePostsRepository>();
 
 
 var app = builder.Build();

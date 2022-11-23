@@ -74,5 +74,34 @@ namespace Client.Controllers
             //var postList = new List<Post>();
             //return View(postList);
         }
+
+        public async Task<IActionResult> LikeUnlike(int id)
+        {
+            var httpClient = _httpClientFactory.CreateClient("APIClient");
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Post,
+                $"/api/favourite");
+
+            //string data = "{\"id\":\""+id+"\"}";
+            request.Content = JsonContent.Create(new { id = id});
+
+            var response = await httpClient.SendAsync(
+                request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+
+            response.EnsureSuccessStatusCode();
+            return View();
+
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
+                    response.StatusCode == System.Net.HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("ErrorPage", "Home");
+            }
+
+            throw new Exception("Can't connect to API");
+
+            //var postList = new List<Post>();
+            //return View(postList);
+        }
     }
 }

@@ -4,8 +4,9 @@ namespace API.Data.FavouritePostsRepository
 {
     public interface IFavouritePostsRepository
     {
-        Task<List<Post>>GetFavouritePostsForUser(int userId);
+        Task<List<FavouritePost>>GetFavouritePostsForUser(int userId);
+        Task<FavouritePost> GetFavouritePost(int postId, int userId);
         Task<FavouritePost> AddToFavourite(FavouritePost post);
-        Task<FavouritePost> RemoveFromFavourite(FavouritePost post);
+        void RemoveFromFavourite(FavouritePost post);
     }
 }

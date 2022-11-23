@@ -53,32 +53,6 @@ namespace Client.Controllers
             return View();
         }
 
-        [Authorize]
-        public async Task<IActionResult> TestWeather()
-        {
-            var httpClient = _httpClientFactory.CreateClient("APIClient");
-
-            var request = new HttpRequestMessage(
-                HttpMethod.Get,
-                "/WeatherForecast");
-
-            var response = await httpClient.SendAsync(
-                request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
-
-            if (response.IsSuccessStatusCode)
-            {
-                var model = await response.Content.ReadAsStringAsync();
-                    return View( JsonConvert.DeserializeObject<List<TestWeather>>(model));
-            }
-            else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
-                    response.StatusCode == System.Net.HttpStatusCode.Forbidden)
-            {
-                return RedirectToAction("ErrorPage", "Home");
-            }
-
-            throw new Exception("Can't connect to API");
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

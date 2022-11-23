@@ -4,7 +4,7 @@
 @model List<Post>
 <head>
  <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Index</title>
+    <title>Favourites</title>
     <link rel="stylesheet" type="text/css" href="https://demo.plantpot.works/assets/css/normalize.css">
     <link rel="stylesheet" href="https://use.typekit.net/opg3wle.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -33,7 +33,7 @@
 									</form>
 									<form method="get" class="p-2">
 										<button type="submit" asp-action="LikeUnlike" asp-route-id="@post.Id" asp-controller="Post" class="btn btn-block btn-dark">
-											LIKE/UNLIKE
+											UNLIKE
 										</button>
 									</form>
 								</figcaption>
@@ -46,9 +46,3 @@
 		</div>
 </body>
 </html>
-
-<script>
-	function changeIcon(icon) {
-		icon.classList.toggle('fa-regular fa-heart');
-	}
-</script>

@@ -23,16 +23,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Politechnika v2/7 semestr/PhotoPin/Client/Views/Home/TestWeather.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXN0V2VhdGhlci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Politechnika v2/7 semestr/PhotoPin/Client/Views/Post/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Politechnika v2/7 semestr/PhotoPin/Client/Views/Post/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Politechnika v2/7 semestr/PhotoPin/Client/Views/Post/Favourites.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxGYXZvdXJpdGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Politechnika v2/7 semestr/PhotoPin/Client/Views/Shared/Error.cshtml]

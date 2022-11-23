@@ -25,6 +25,34 @@ namespace Client.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Favourites()
+        {
+            var httpClient = _httpClientFactory.CreateClient("APIClient");
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Get,
+                "/api/favourite");
+
+            var response = await httpClient.SendAsync(
+                request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var model = await response.Content.ReadAsStringAsync();
+                return View(JsonConvert.DeserializeObject<List<Post>>(model));
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
+                    response.StatusCode == System.Net.HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("ErrorPage", "Home");
+            }
+
+            throw new Exception("Can't connect to API");
+
+            //var postList = new List<Post>();
+            //return View(postList);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(CreatePostViewModel model)
         {
@@ -83,7 +111,6 @@ namespace Client.Controllers
                 HttpMethod.Post,
                 $"/api/favourite");
 
-            //string data = "{\"id\":\""+id+"\"}";
             request.Content = JsonContent.Create(new { id = id});
 
             var response = await httpClient.SendAsync(

@@ -30,7 +30,9 @@ namespace API.Data.FavouritePostsRepository
         {
             return await _dbContext.FavouritePosts
                 .Where(p => p.UserId == userId)
-                .Include(p => p.Post).ToListAsync();
+                .Include(p => p.Post)
+                .ThenInclude(p => p.User)
+                .ToListAsync();
         }
 
         public void RemoveFromFavourite(FavouritePost post)

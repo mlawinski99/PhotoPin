@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xpum4tajvE2XsFVdvhKn8nMNgzO3SV/Zd9s/tVYao2M=",
+  "Hash": "D4n0cSewQpieHYfhrR1Tx3L46NPxi8Aq9wKZ9s2MLSg=",
   "Source": "API",
   "BasePath": "_content/API",
   "Mode": "Default",
@@ -10,19 +10,19 @@
     {
       "Name": "API\\wwwroot",
       "Source": "API",
-      "ContentRoot": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\",
+      "ContentRoot": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\",
       "BasePath": "_content/API",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\Images\\149fe87e-7eca-4635-8636-c56c3b167f6d_fenix.png",
+      "Identity": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\4f25423d-c882-4665-8b0c-9289eeffa0e0_fenix.png",
       "SourceId": "API",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\",
+      "ContentRoot": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "Images/149fe87e-7eca-4635-8636-c56c3b167f6d_fenix.png",
+      "RelativePath": "images/4f25423d-c882-4665-8b0c-9289eeffa0e0_fenix.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,15 +31,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\149fe87e-7eca-4635-8636-c56c3b167f6d_fenix.png"
+      "OriginalItemSpec": "wwwroot\\images\\4f25423d-c882-4665-8b0c-9289eeffa0e0_fenix.png"
     },
     {
-      "Identity": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\Images\\4f25423d-c882-4665-8b0c-9289eeffa0e0_fenix.png",
+      "Identity": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\ae1c7c94-7549-46d6-ad47-c1e5406dcb69_4.jpg",
       "SourceId": "API",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\",
+      "ContentRoot": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "Images/4f25423d-c882-4665-8b0c-9289eeffa0e0_fenix.png",
+      "RelativePath": "images/ae1c7c94-7549-46d6-ad47-c1e5406dcb69_4.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -48,15 +48,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\4f25423d-c882-4665-8b0c-9289eeffa0e0_fenix.png"
+      "OriginalItemSpec": "wwwroot\\images\\ae1c7c94-7549-46d6-ad47-c1e5406dcb69_4.jpg"
     },
     {
-      "Identity": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\Images\\55861986-5999-43b5-a4c7-6d69c960ea90_fenix.png",
+      "Identity": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\c5c96c87-0d58-408c-9791-89071beca4ad_3.jpeg",
       "SourceId": "API",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\",
+      "ContentRoot": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "Images/55861986-5999-43b5-a4c7-6d69c960ea90_fenix.png",
+      "RelativePath": "images/c5c96c87-0d58-408c-9791-89071beca4ad_3.jpeg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -65,15 +65,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\55861986-5999-43b5-a4c7-6d69c960ea90_fenix.png"
+      "OriginalItemSpec": "wwwroot\\images\\c5c96c87-0d58-408c-9791-89071beca4ad_3.jpeg"
     },
     {
-      "Identity": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\Images\\742b6d70-84c0-41c9-afa7-1bb28e47c85a_fenix.png",
+      "Identity": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\e64def95-e885-444a-8b49-b3e637888fa9_2.jpg",
       "SourceId": "API",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Politechnika v2\\7 semestr\\PhotoPin\\API\\wwwroot\\",
+      "ContentRoot": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\",
       "BasePath": "_content/API",
-      "RelativePath": "Images/742b6d70-84c0-41c9-afa7-1bb28e47c85a_fenix.png",
+      "RelativePath": "images/e64def95-e885-444a-8b49-b3e637888fa9_2.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -82,7 +82,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\742b6d70-84c0-41c9-afa7-1bb28e47c85a_fenix.png"
+      "OriginalItemSpec": "wwwroot\\images\\e64def95-e885-444a-8b49-b3e637888fa9_2.jpg"
     }
   ]
 }

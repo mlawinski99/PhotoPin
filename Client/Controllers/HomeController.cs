@@ -1,4 +1,5 @@
 ﻿using Client.Models;
+using Client.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,20 +25,36 @@ namespace Client.Controllers
         {
             var httpClient = _httpClientFactory.CreateClient("APIClient");
 
-            var request = new HttpRequestMessage(
+            var requestPosts = new HttpRequestMessage(
                 HttpMethod.Get,
                 "/api/posts/all");
 
-            var response = await httpClient.SendAsync(
-                request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+            var responsePosts = await httpClient.SendAsync(
+                requestPosts, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
-            if (response.IsSuccessStatusCode)
+
+            var requestFavourites = new HttpRequestMessage(
+                HttpMethod.Get,
+                "/api/favourite");
+
+            var responseFavourites = await httpClient.SendAsync(
+                requestFavourites, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+         
+            if (responsePosts.IsSuccessStatusCode && responseFavourites.IsSuccessStatusCode)
             {
-                var model = await response.Content.ReadAsStringAsync();
-                return View(JsonConvert.DeserializeObject<List<Post>>(model));
+                var modelPost = await responsePosts.Content.ReadAsStringAsync();
+                var modelFavourites = await responseFavourites.Content.ReadAsStringAsync();
+
+                var lists = new ListsViewModel {
+                    Favourites = JsonConvert.DeserializeObject<List<Post>>(modelFavourites),
+                    Posts = JsonConvert.DeserializeObject<List<Post>>(modelPost)
+                };
+                return View(lists);
             }
-            else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
-                    response.StatusCode == System.Net.HttpStatusCode.Forbidden)
+            else if (responsePosts.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
+                    responsePosts.StatusCode == System.Net.HttpStatusCode.Forbidden ||
+                   responseFavourites.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
+                   responseFavourites.StatusCode == System.Net.HttpStatusCode.Forbidden)
             {
                 return RedirectToAction("ErrorPage", "Home");
             }

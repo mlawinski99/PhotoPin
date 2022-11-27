@@ -24,12 +24,9 @@ namespace API.Controllers
             _userRepository = userRepository;
             _mapper = mapper;
         }
-        public class PostModel
-        {
-            public int Id { get; set; }
-        }
+        
         [HttpPost]
-        public async Task<IActionResult> AddRemoveFavourites([FromBody]PostModel postModel)
+        public async Task<IActionResult> AddRemoveFavourites([FromBody]PostIdDto postModel)
         {
             var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
             var user = await _userRepository.GetUserByExternalId(userSub);

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Hu/mvSL3+C4BLb6J71jKisUS3vi4pWfneuGSKI8tGPM=",
+  "Hash": "ZX9epXUaRhQDq41F/tPw0az6kmEJSLWVHORKKMZaWp4=",
   "Source": "Client",
   "BasePath": "_content/Client",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Projekty\\PhotoPin\\Client\\wwwroot\\images\\photo.png",
+      "SourceId": "Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projekty\\PhotoPin\\Client\\wwwroot\\",
+      "BasePath": "_content/Client",
+      "RelativePath": "images/photo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\photo.png"
     },
     {
       "Identity": "D:\\Projekty\\PhotoPin\\Client\\wwwroot\\js\\site.js",

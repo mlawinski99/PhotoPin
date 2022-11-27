@@ -114,9 +114,9 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeletePost(int id)
+        public async Task<ActionResult> DeletePost([FromBody] PostIdDto postModel)
         {
-            var post = await _postRepository.GetPostById(id);
+            var post = await _postRepository.GetPostById(postModel.Id);
             if (post == null)
                 return NotFound();
 

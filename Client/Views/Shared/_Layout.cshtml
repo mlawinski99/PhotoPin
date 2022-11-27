@@ -13,36 +13,31 @@
         <div class="navbarCorrector">
             <nav classname="navbar" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container">
+                    <div>
                     <a class="navbar-brand mr-4" asp-area="" asp-controller="Home" asp-action="Index">PhotoPin</a>
+                    <img src="~/Images/photo.png" style="width:25px; height:25px;float:right;" /></div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-light btn btn-dark" style="border: none;" asp-area="" asp-controller="Home" asp-action="About">About me</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
                 <div>
                     <ul class="navbar-nav ml-auto">
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item mr-2">
-                                <a class="nav-link text-light btn btn-dark" style="border: none;" asp-area="" asp-controller="Post" asp-action="Create">Add Photo</a>
+                                <a class="nav-link text-light btn btn-dark" style="margin: 3px" asp-area="" asp-controller="Post" asp-action="Create">Add Photo</a>
                             </li>
                             <li class="nav-item mr-2">
-                                <a class="nav-link text-light btn btn-dark" style="border: none;" asp-area="" asp-controller="User" asp-action="MyProfile">My Profile</a>
+                                <a class="nav-link text-light btn btn-dark" style="margin: 3px" asp-area="" asp-controller="User" asp-action="MyProfile">My Profile</a>
                             </li>
                             <li class="nav-item mr-2">
-                                <a class="nav-link text-light btn btn-dark" style="border: none;" asp-area="" asp-controller="Post" asp-action="Favourites">Favourites</a>
+                                <a class="nav-link text-light btn btn-dark" style="margin: 3px;" asp-area="" asp-controller="Post" asp-action="Favourites">Favourites</a>
                             </li>
 
                             <li class="nav-item">
                                 <form method="post" asp-controller="User" asp-action="Logout">
-                                    <button type="submit" class="nav-link text-light btn btn-dark" style="border:none;">
+                                    <button type="submit" class="nav-link text-light btn btn-dark" style="margin: 3px">
                                         Logout
                                     </button>
                                 </form>

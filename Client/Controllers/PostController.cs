@@ -117,7 +117,7 @@ namespace Client.Controllers
                 request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
-            return View("Index", "Home");
+            return RedirectToAction("Index", "Home");
 
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
                     response.StatusCode == System.Net.HttpStatusCode.Forbidden)
@@ -130,5 +130,25 @@ namespace Client.Controllers
             //var postList = new List<Post>();
             //return View(postList);
         }
-    }
+
+		public async Task<IActionResult> Delete(int id)
+		{
+			var httpClient = _httpClientFactory.CreateClient("APIClient");
+
+			var request = new HttpRequestMessage(
+				HttpMethod.Delete,
+				$"/api/posts/{id}");
+
+			request.Content = JsonContent.Create(new { id = id });
+
+			var response = await httpClient.SendAsync(
+				request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+
+			if(response.EnsureSuccessStatusCode().IsSuccessStatusCode)
+				return RedirectToAction("MyProfile", "User");
+
+
+			throw new Exception("Can't connect to API");
+		}
+	}
 }

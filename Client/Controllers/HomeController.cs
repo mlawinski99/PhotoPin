@@ -39,7 +39,7 @@ namespace Client.Controllers
 
             var responseFavourites = await httpClient.SendAsync(
                 requestFavourites, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
-         
+            
             if (responsePosts.IsSuccessStatusCode && responseFavourites.IsSuccessStatusCode)
             {
                 var modelPost = await responsePosts.Content.ReadAsStringAsync();

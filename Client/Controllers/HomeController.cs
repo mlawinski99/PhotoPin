@@ -36,7 +36,7 @@ namespace Client.Controllers
                 HttpMethod.Get,
                 "/api/favourite");
 
-            var responseFavourites = await httpClient.SendAsync(
+			var responseFavourites = await httpClient.SendAsync(
                 requestFavourites, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
             
             if (responsePosts.IsSuccessStatusCode && responseFavourites.IsSuccessStatusCode)
@@ -48,7 +48,21 @@ namespace Client.Controllers
                     Favourites = JsonConvert.DeserializeObject<List<Post>>(modelFavourites),
                     Posts = JsonConvert.DeserializeObject<List<Post>>(modelPost)
                 };
-                return View(lists);
+                //var likeList = new List<int>(); 
+				foreach (var post in lists.Posts)
+				{
+					var requestLikeCount = new HttpRequestMessage(
+						HttpMethod.Get,
+						$"api/favourite/{post.Id}");
+					var responseLikeCount = await httpClient.SendAsync(
+						requestLikeCount, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+					var modelLikes = await responseLikeCount.Content.ReadAsStringAsync();
+                    var model = JsonConvert.DeserializeObject<LikeCountViewModel>(modelLikes);
+
+					post.likeCount = model.count;
+				}
+                //lists.LikeCount = likeList;
+				return View(lists);
             }
             else if (responsePosts.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
                     responsePosts.StatusCode == System.Net.HttpStatusCode.Forbidden ||

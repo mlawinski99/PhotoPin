@@ -14,9 +14,7 @@
 	<form class="p-2" method="post" asp-action="UserProfile" asp-controller="User">
 		<div class="input-group">
 			<input type="text" class="form-control" placeholder="Search user" id="userName" name="userName"> 
-			<div class="input-group-append">
 				<button type="submit" class="btn btn-light"><i class="fa fa-search"></i></button>
-			</div>
 		</div>
 	</form>
 	<div class="container">
@@ -40,6 +38,13 @@
 											View Details
 										</button>
 									</form>
+									@if (post.likeCount != 1){
+										<p class="p-3" style="float:right;">@post.likeCount likes</p>
+									}
+									else
+									{
+										<p class="p-3" style="float:right;">1 like</p>
+									}
 									@if (Model.Favourites.Any(p => p.Id == post.Id))
 									{
 										<form method="get" class="p-2">
@@ -56,6 +61,7 @@
 											</button>
 										</form>
 									}
+									
 								</figcaption>
 							</figure>
 						</div> <!-- col.// -->

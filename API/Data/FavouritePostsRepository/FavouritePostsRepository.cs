@@ -26,7 +26,15 @@ namespace API.Data.FavouritePostsRepository
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<List<FavouritePost>> GetFavouritePostsForUser(int userId)
+		public async Task<List<FavouritePost>> GetFavouritePostsById(int id)
+		{
+            return await _dbContext.FavouritePosts
+                .Where(p => p.PostId == id)
+                .ToListAsync();
+
+		}
+
+		public async Task<List<FavouritePost>> GetFavouritePostsForUser(int userId)
         {
             return await _dbContext.FavouritePosts
                 .Where(p => p.UserId == userId)

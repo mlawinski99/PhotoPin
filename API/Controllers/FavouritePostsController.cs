@@ -24,9 +24,9 @@ namespace API.Controllers
             _userRepository = userRepository;
             _mapper = mapper;
         }
-        
+
         [HttpPost]
-        public async Task<IActionResult> AddRemoveFavourites([FromBody]PostIdDto postModel)
+        public async Task<IActionResult> AddRemoveFavourites([FromBody] PostIdDto postModel)
         {
             var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
             var user = await _userRepository.GetUserByExternalId(userSub);
@@ -52,12 +52,24 @@ namespace API.Controllers
 
             var favouritePosts = await _favouritePostsRepository.GetFavouritePostsForUser(user.Id);
             var posts = new List<Post>();
-            foreach(var favouritePost in favouritePosts)
+            foreach (var favouritePost in favouritePosts)
             {
                 posts.Add(favouritePost.Post);
             }
-            
+
             return Ok(_mapper.Map<IEnumerable<PostReadDto>>(posts));
         }
-    }
+
+        [HttpGet("{id}")]
+		public async Task<IActionResult> GetLikesNumber(int id)
+		{
+		
+			var favouritePosts = await _favouritePostsRepository.GetFavouritePostsById(id);
+			int likesNumber = favouritePosts.Count();
+            var likeModel = new PostLikesCountDto();
+            likeModel.count = likesNumber;
+
+			return Ok(likeModel);
+		}
+	}
 }

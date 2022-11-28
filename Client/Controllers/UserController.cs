@@ -45,7 +45,27 @@ namespace Client.Controllers
             throw new Exception("Can't connect to API");
 
         }
+        [HttpPost]
+        public async Task<IActionResult> UserProfile(string userName)
+        {
+            //API search for user
+            var httpClient = _httpClientFactory.CreateClient("APIClient");
 
+            var request = new HttpRequestMessage(
+                HttpMethod.Get,
+                $"/api/user/{userName}");
+
+            var response = await httpClient.SendAsync(
+                request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var model = await response.Content.ReadAsStringAsync();
+                return View(JsonConvert.DeserializeObject<User>(model));
+            }
+
+            return RedirectToAction("UserError", "User");
+        }
         public async Task Logout()
         {
             var client = _httpClientFactory.CreateClient("IDPClient");
@@ -86,6 +106,11 @@ namespace Client.Controllers
 
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignOutAsync(OpenIdConnectDefaults.AuthenticationScheme);
+        }
+
+        public IActionResult UserError()
+        {
+            return View();
         }
     }
 }

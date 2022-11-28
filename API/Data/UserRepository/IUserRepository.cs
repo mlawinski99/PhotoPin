@@ -9,5 +9,6 @@ namespace API.Data.UserRepo
         Task<User?> GetUser(int id);
         Task<User> GetUserByExternalId(string id);
         Task<User> AddUser(User user);
+        Task<User> GetUserByUserName(string userName);
     }
 }

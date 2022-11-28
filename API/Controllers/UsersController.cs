@@ -32,5 +32,18 @@ namespace API.Controllers
             return Ok(_mapper.Map<UserReadDto>(user));
         }
 
+        [HttpGet]
+        [Route("{userName}")]
+        public async Task<IActionResult> GetUserByUserName(string userName)
+        {
+
+            var user = await _userRepository.GetUserByUserName(userName);
+            var test = user.Posts;
+            if (user == null)
+                return NotFound();
+
+            return Ok(_mapper.Map<UserReadDto>(user));
+        }
+
     }
 }

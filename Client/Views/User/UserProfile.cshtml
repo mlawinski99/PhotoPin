@@ -1,0 +1,46 @@
+﻿
+	@model User
+<head>
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>UserProfile</title>
+	<link rel="stylesheet" type="text/css" href="https://demo.plantpot.works/assets/css/normalize.css">
+	<link rel="stylesheet" href="https://use.typekit.net/opg3wle.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+	<h1>@Model.UserName</h1>
+	<hr>
+	<div class="container">
+		<div class="row">
+			<main class="col-md-9">
+				<div class="row ">
+					@if(Model.Posts != null)
+					{
+							@foreach (var post in Model.Posts)
+							{
+							<div class="col-md-4 ">
+								<figure class="card card-product-grid d-flex align-items-start flex-column" style="height: 100%;">
+									<div class="img-wrap mb-auto p-2">
+										<img src="@("https://localhost:7061/images/" + post.ImagePath)" asp-append-version="true" class="img-fluid" style="height:190px;width:280px">
+									</div> <!-- img-wrap.// -->
+									<figcaption class="d-flex justify-content-center">
+										<form method="get" class="p-2">
+											<button type="submit" asp-action="Details" asp-route-id="@post.Id" asp-controller="Post" class="btn btn-block btn-dark">
+												View Details
+											</button>
+										</form>
+									</figcaption>
+								</figure>
+							</div> <!-- col.// -->
+							}
+					}
+					else
+					{
+						<p>User did not upload any posts.</p>
+					}
+				</div> <!-- row end.// -->
+
+			</main>
+		</div>
+</body>
+</html>

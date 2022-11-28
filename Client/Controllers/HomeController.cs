@@ -14,7 +14,7 @@ namespace Client.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IHttpClientFactory _httpClientFactory;
 
-        
+
         public HomeController(ILogger<HomeController> logger, IHttpClientFactory httpClientFactory)
         {
             _logger = logger;
@@ -31,7 +31,6 @@ namespace Client.Controllers
 
             var responsePosts = await httpClient.SendAsync(
                 requestPosts, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
-
 
             var requestFavourites = new HttpRequestMessage(
                 HttpMethod.Get,

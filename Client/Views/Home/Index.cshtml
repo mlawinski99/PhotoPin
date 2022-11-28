@@ -11,6 +11,14 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
+	<form class="p-2" method="post" asp-action="UserProfile" asp-controller="User">
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="Search user" id="userName" name="userName"> 
+			<div class="input-group-append">
+				<button type="submit" class="btn btn-light"><i class="fa fa-search"></i></button>
+			</div>
+		</div>
+	</form>
 	<div class="container">
 		<div class="row">
 			<main class="col-md-9">

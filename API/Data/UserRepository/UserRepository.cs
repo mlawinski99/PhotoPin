@@ -23,13 +23,20 @@ namespace API.Data.UserRepository
 
         public async Task<User?> GetUser(int id)
         {
-            //var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
-            return null;
+           return await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task<User> GetUserByExternalId(string id)
         {
             return await _dbContext.Users.FirstOrDefaultAsync(u => u.ExternalId == id);
+        }
+
+        public async Task<User> GetUserByUserName(string userName)
+        {
+            return await _dbContext.Users
+                .Where(u => u.UserName == userName)
+                .Include(u => u.Posts)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<bool> IsUserExists(string id)

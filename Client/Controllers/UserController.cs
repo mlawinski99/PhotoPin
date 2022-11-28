@@ -11,7 +11,7 @@ using System.Net.Http;
 
 namespace Client.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class UserController : Controller
     {
 
@@ -106,6 +106,12 @@ namespace Client.Controllers
 
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignOutAsync(OpenIdConnectDefaults.AuthenticationScheme);
+        }
+
+        [AllowAnonymous]
+        public IActionResult Login()
+        {
+            return RedirectToAction("Index", "Post");
         }
 
         public IActionResult UserError()

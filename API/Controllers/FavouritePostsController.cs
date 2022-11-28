@@ -48,9 +48,11 @@ namespace API.Controllers
         public async Task<IActionResult> GetFavourites()
         {
             var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            Thread.Sleep(100);
             var user = await _userRepository.GetUserByExternalId(userSub);
 
             var favouritePosts = await _favouritePostsRepository.GetFavouritePostsForUser(user.Id);
+
             var posts = new List<Post>();
             foreach (var favouritePost in favouritePosts)
             {

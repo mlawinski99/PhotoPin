@@ -32,39 +32,7 @@ builder.Services.AddHttpClient("IDPClient", client =>
     client.DefaultRequestHeaders.Clear();
     client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
 });
-/*
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultScheme = "cookie";
-    options.DefaultChallengeScheme = "oidc";
-}).AddCookie("cookie")
-  .AddOpenIdConnect("oidc", options =>
-    {
-        options.Authority = configuration["InteractiveIS4Config:Url"];
-        options.ClientId = configuration["InteractiveIS4Config:ClientId"];
-        options.ClientSecret = configuration["InteractiveIS4Config:ClientSecret"];
-        options.SaveTokens = true;
-        options.RequireHttpsMetadata = true;
-        options.ResponseType = "code";
-        // options.UsePkce = true;
-        //options.ResponseMode = "query";
-       // options.ClaimActions.MapUniqueJsonKey("name", "name");
 
-       // options.TokenValidationParameters.RoleClaimType = "roles";
-      //  options.TokenValidationParameters.NameClaimType = "name";
-        options.GetClaimsFromUserInfoEndpoint = true;
-
-        options.Scope.Clear();
-        options.Scope.Add("openid");
-        options.Scope.Add(configuration["InteractiveIS4Config:Scopes:0"]);
-        options.Scope.Add("profile");
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            NameClaimType = JwtClaimTypes.GivenName,
-            RoleClaimType = JwtClaimTypes.Role
-        };
-    });
-*/
 
 builder.Services.AddAuthentication(options =>
 {

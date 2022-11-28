@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "UR3JDOjtlRL9jNfNNGd1Dxx/7sgwybj2c17X8MhYd4o=",
+  "Source": "API.Gateaway",
+  "BasePath": "_content/API.Gateaway",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

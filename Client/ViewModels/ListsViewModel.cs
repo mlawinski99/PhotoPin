@@ -6,6 +6,5 @@ namespace Client.ViewModels
     {
         public List<Post> Posts { get; set; }
         public List<Post> Favourites { get; set; }
-        public List<int> LikeCount { get; set; }
     }
 }

@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+@using Client.ViewModels
+@model ListsViewModel
+<head>
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="https://demo.plantpot.works/assets/css/normalize.css">
+    <link rel="stylesheet" href="https://use.typekit.net/opg3wle.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+	<form class="p-2" method="post" asp-action="UserProfile" asp-controller="User">
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="Search user" id="userName" name="userName"> 
+				<button type="submit" class="btn btn-light"><i class="fa fa-search"></i></button>
+		</div>
+	</form>
+	<div class="container">
+		<div class="row">
+			<main class="col-md-9">
+				<div class="row ">
+					@foreach (var post in Model.Posts)
+					{
+						<div class="col-md-4 ">
+							<figure class="card card-product-grid d-flex align-items-start flex-column" style="height: 100%;">
+								<div class="fix-height mb-2 p-2">
+										<div class="text-lg-left">Posted by: @post.UserName</div>
+									</div>
+								<div class="img-wrap mb-auto p-2">
+									<img src="@("https://localhost:7061/images/" + post.ImagePath)" asp-append-version="true" class="img-fluid" style="height:190px;width:280px">
+								</div> <!-- img-wrap.// -->
+								<figcaption class="d-flex justify-content-center">
+
+									<form method="get" class="p-2">
+										<button type="submit" asp-action="Details" asp-route-id="@post.Id" asp-controller="Post" class="btn btn-block btn-dark">
+											View Details
+										</button>
+									</form>
+									@if (post.likeCount != 1){
+										<p class="p-3" style="float:right;">@post.likeCount likes</p>
+									}
+									else
+									{
+										<p class="p-3" style="float:right;">1 like</p>
+									}
+									@if (Model.Favourites.Any(p => p.Id == post.Id))
+									{
+										<form method="get" class="p-2">
+											<button type="submit" asp-action="LikeUnlike" asp-route-id="@post.Id" asp-controller="Post" class="btn btn-block btn-danger">
+												UNLIKE
+											</button>
+										</form>
+									}
+									else
+									{
+										<form method="get" class="p-2">
+										<button type="submit" asp-action="LikeUnlike" asp-route-id="@post.Id" asp-controller="Post" class="btn btn-block btn-dark">
+												LIKE
+											</button>
+										</form>
+									}
+									
+								</figcaption>
+							</figure>
+						</div> <!-- col.// -->
+					}
+				</div> <!-- row end.// -->
+
+			</main>
+		</div>
+</body>
+</html>

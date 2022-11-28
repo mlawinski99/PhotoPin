@@ -2,6 +2,7 @@
 using API.Data.UserRepository;
 using API.Mapping.Dtos.User;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
@@ -10,6 +11,7 @@ namespace API.Controllers
 {
     [Route("api/user")]
     [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IMapper _mapper;

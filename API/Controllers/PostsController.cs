@@ -17,7 +17,7 @@ namespace API.Controllers
 {
     [Route("api/posts")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class PostsController : ControllerBase
     {
         private readonly IMapper _mapper;

@@ -3,8 +3,10 @@ using Client.ViewModels;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
@@ -139,11 +141,9 @@ namespace Client.Controllers
             var request = new HttpRequestMessage(
                 HttpMethod.Get,
                 $"/api/posts/{id}");
-
             var response = await httpClient.SendAsync(
                 request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
-
-            if (response.IsSuccessStatusCode)
+			if (response.IsSuccessStatusCode)
             {
                 var model = await response.Content.ReadAsStringAsync();
                 return View(JsonConvert.DeserializeObject<Post>(model));
@@ -159,6 +159,33 @@ namespace Client.Controllers
             //var postList = new List<Post>();
             //return View(postList);
         }
+
+        public async Task<IActionResult> AddComment(int id, string addComment)
+        {
+            var comment = new CreateCommentViewModel { PostId = id, Text = addComment };
+
+            var httpClient = _httpClientFactory.CreateClient("APIClient");
+            var request = new HttpRequestMessage(
+                HttpMethod.Post,
+                $"api/comments");
+            request.Content = JsonContent.Create(new { postId = id, text = addComment });
+
+			//Console.WriteLine(request.Content.Headers);
+			var response = await httpClient.SendAsync(
+               request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+				return RedirectToAction("Details", new RouteValueDictionary(
+	new { controller = "Post", action = "Details", Id = id }));
+			}
+            else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
+                    response.StatusCode == System.Net.HttpStatusCode.Forbidden)
+            {
+                return RedirectToAction("ErrorPage", "Home");
+            }
+			throw new Exception("Can't connect to API");
+		}
 
         public async Task<IActionResult> LikeUnlike(int id)
         {

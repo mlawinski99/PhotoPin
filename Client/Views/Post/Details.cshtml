@@ -3,7 +3,6 @@
 }
 
 @model Post
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
  <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -14,7 +13,7 @@
 </head>
 <body>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-	<div class="container shadow-lg rounded" style="margin-top:-20px;">
+	<div class="container shadow-lg rounded" style="margin-top:-20px;margin-bottom:5%;">
 		<!-- product -->
 		<div class=" product-wrap product-deatil">
 			<div class="row">
@@ -30,7 +29,7 @@
 					</div>
 				</div>
 					<hr />
-				<div class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12 ">
+				<div class="col-md-6 col-md-offset-1 col-sm-8 col-xs-8 ">
 					<h2 class="name">
 						<b>Posted by:</b> @Model.UserName
 					</h2>
@@ -45,13 +44,52 @@
 							<p class="text-justify">@Model.Description</p>
 						</div>
 					</div>
+
+				</div>
+                <div class="row d-flex justify-content-center" >
+                    <div class="col-md-8 col-lg-6" style="margin-bottom:2%;">
+                        <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+                            <div class="card-body p-4">
+                                <div class="form-outline mb-4">
+									<form method="post" class="p-2 m-2" asp-route-id="@Model.Id" asp-action="AddComment" asp-asp-controller="Post">
+										<input type="text" id="addComment" name="addComment" class="form-control" placeholder="Write your comment..." />
+										<button style="margin-top:1%;"type="submit" class="btn btn-block btn-dark">
+											Add Comment
+										</button>
+									</form>
+                                </div>
+							@if (Model.Comments.Any())
+							{
+								@foreach (var comment in Model.Comments)
+								{
+									<div class="card mb-4">
+										<div class="card-body">
+											<p>@comment.Text</p>
+											<div class="d-flex justify-content-between">
+												<div class="d-flex flex-row align-items-center">
+													<p class="small mb-0 ms-2">@comment.UserName @comment.CreatedDate</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								}
+							}
+							else
+							{
+								<div class="card mb-4">
+										<div class="card-body">
+											<p> Post does not have any comments for now.</p>
+										</div>
+								</div>
+							}
+						</div>
+                        </div>
+                    </div>
+                </div>
 				</div>
 					</div>
+
 				</div>
-			</div>
-		</div>
-		<!-- end product -->
-	</div>
 	<script type="text/javascript">
 	</script>
 </body>

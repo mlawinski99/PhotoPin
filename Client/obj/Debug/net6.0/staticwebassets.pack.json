@@ -17,22 +17,6 @@
       "PackagePath": "staticwebassets\\images\\connected.png"
     },
     {
-      "Id": "D:\\Projekty\\PhotoPin\\Client\\wwwroot\\images\\index1.jpg",
-      "PackagePath": "staticwebassets\\images\\index1.jpg"
-    },
-    {
-      "Id": "D:\\Projekty\\PhotoPin\\Client\\wwwroot\\images\\index2.jpg",
-      "PackagePath": "staticwebassets\\images\\index2.jpg"
-    },
-    {
-      "Id": "D:\\Projekty\\PhotoPin\\Client\\wwwroot\\images\\index3.jpg",
-      "PackagePath": "staticwebassets\\images\\index3.jpg"
-    },
-    {
-      "Id": "D:\\Projekty\\PhotoPin\\Client\\wwwroot\\images\\index4.jpg",
-      "PackagePath": "staticwebassets\\images\\index4.jpg"
-    },
-    {
       "Id": "D:\\Projekty\\PhotoPin\\Client\\wwwroot\\images\\photo.png",
       "PackagePath": "staticwebassets\\images\\photo.png"
     },

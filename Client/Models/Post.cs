@@ -1,4 +1,6 @@
-﻿namespace Client.Models
+﻿using Newtonsoft.Json.Linq;
+
+namespace Client.Models
 {
 	public class Post
 	{
@@ -8,5 +10,6 @@
         public string Description { get; set; }
         public string ImagePath { get; set; }
 		public int? likeCount { get; set; }
+		public List<Comment> Comments { get; set; }
 	}
 }

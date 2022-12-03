@@ -38,7 +38,7 @@ namespace API.Data.PostRepository
         {
             return await _dbContext.Posts
                 .Include(p => p.User)
-                .Include(p => p.Comments)
+                .Include(p => p.Comments.OrderByDescending(c => c.CreatedDate).Take(5))
                 .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Id == id);
         }

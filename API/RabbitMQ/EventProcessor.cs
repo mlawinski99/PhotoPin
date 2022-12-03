@@ -26,9 +26,9 @@ namespace API.RabbitMQ
             var recognizedEventType = RecognizeEventType(message);
 
             if (recognizedEventType == EventTypeEnum.UserCreated)
-              AddPlatform(message);
+              AddUser(message);
         }
-        public async void AddPlatform(string message)
+        public async void AddUser(string message)
         {
             var userCreatedDto = JsonSerializer.Deserialize<UserCreatedDto>(message);
 

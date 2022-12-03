@@ -34,7 +34,6 @@ D:\Politechnika v2\7 semestr\PhotoPin\Client\obj\Debug\net6.0\refint\Client.dll
 D:\Politechnika v2\7 semestr\PhotoPin\Client\obj\Debug\net6.0\Client.pdb
 D:\Politechnika v2\7 semestr\PhotoPin\Client\obj\Debug\net6.0\Client.genruntimeconfig.cache
 D:\Politechnika v2\7 semestr\PhotoPin\Client\obj\Debug\net6.0\ref\Client.dll
-D:\Projekty\PhotoPin\Client\obj\Debug\net6.0\Client.pdb
 D:\Projekty\PhotoPin\Client\bin\Debug\net6.0\appsettings.Development.json
 D:\Projekty\PhotoPin\Client\bin\Debug\net6.0\appsettings.json
 D:\Projekty\PhotoPin\Client\bin\Debug\net6.0\Client.staticwebassets.runtime.json
@@ -73,5 +72,6 @@ D:\Projekty\PhotoPin\Client\obj\Debug\net6.0\scopedcss\projectbundle\Client.bund
 D:\Projekty\PhotoPin\Client\obj\Debug\net6.0\Client.csproj.CopyComplete
 D:\Projekty\PhotoPin\Client\obj\Debug\net6.0\Client.dll
 D:\Projekty\PhotoPin\Client\obj\Debug\net6.0\refint\Client.dll
+D:\Projekty\PhotoPin\Client\obj\Debug\net6.0\Client.pdb
 D:\Projekty\PhotoPin\Client\obj\Debug\net6.0\Client.genruntimeconfig.cache
 D:\Projekty\PhotoPin\Client\obj\Debug\net6.0\ref\Client.dll

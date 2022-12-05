@@ -40,7 +40,6 @@ namespace API.Controllers
         {
 
             var user = await _userRepository.GetUserByUserName(userName);
-            var test = user.Posts;
             if (user == null)
                 return NotFound();
 

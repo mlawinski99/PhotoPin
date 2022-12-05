@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
@@ -6,16 +7,13 @@ using Ocelot.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 IdentityModelEventSource.ShowPII = true;
 builder.Services.AddAuthentication()
-    .AddJwtBearer("IdentityApiKey", options =>
-    {
-        options.Authority = "https://localhost:44397";
-        options.Audience = "weatherapi";
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateAudience = false,
-            ValidateIssuer = false
-        };
-    });
+	.AddJwtBearer("IdentityApiKey", options =>
+	{
+		options.Authority = "https://localhost:44397";
+		options.Audience = "weatherapi";
+	});
+
+
 
 builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
     .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)

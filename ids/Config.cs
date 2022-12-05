@@ -98,38 +98,6 @@ namespace Ids
         public static IEnumerable<Client> Clients =>
           new[]
           {
-              /*
-        // m2m client credentials flow client
-        new Client
-        {
-          ClientId = "m2m.client",
-          ClientName = "Client Credentials Client",
-
-          AllowedGrantTypes = GrantTypes.ClientCredentials,
-          ClientSecrets = {new Secret("SuperSecretPassword".Sha256())},
-
-          AllowedScopes = { "openid", "profile", "weatherapi.read", "weatherapi.write"}
-        },
-
-        // interactive client using code flow + pkce
-        new Client
-        {
-          ClientId = "interactive",
-          ClientSecrets = {new Secret("SuperSecretPassword".Sha256())},
-
-          AllowedGrantTypes = GrantTypes.Code,
-
-           RedirectUris = {"https://localhost:5444/signin-oidc","https://localhost:7166/signin-oidc"},
-          FrontChannelLogoutUri = "https://localhost:5444/signout-oidc",
-          PostLogoutRedirectUris = {"https://localhost:5444/signout-callback-oidc"},
-
-          AllowOfflineAccess = true,
-          AllowedScopes = {IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServerConstants.StandardScopes.Profile, "weatherapi.read"},
-          RequirePkce = true,
-          RequireConsent = false,
-          AllowPlainTextPkce = false
-        },*/
 
                new Client
                 {

@@ -46,7 +46,6 @@ namespace API.Controllers
 
 
         [HttpGet]
-        [Route("all")]
         public async Task<IActionResult> GetPosts()
         {
             var posts = await _postRepository.GetAllPosts();

@@ -28,6 +28,11 @@ namespace Client.Controllers
             return View();
         }
 
+        public IActionResult ErrorPage()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

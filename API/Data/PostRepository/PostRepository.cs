@@ -50,13 +50,5 @@ namespace API.Data.PostRepository
                 .Where(p => p.UserId == id)
                 .ToListAsync();
         }
-
-        public async Task<Post> UpdatePost(Post post)
-        {
-            _dbContext.Attach(post);
-            _dbContext.Entry(post).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
-            return post;
-        }
     }
 }

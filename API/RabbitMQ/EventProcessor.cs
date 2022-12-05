@@ -38,7 +38,8 @@ namespace API.RabbitMQ
                 var userRepository = scope.ServiceProvider.GetRequiredService<IUserRepository>();
                 if (!await userRepository.IsUserExists(user.ExternalId))
                     await userRepository.AddUser(user);
-            }
+				Thread.Sleep(100);
+			}
         }
         public EventTypeEnum RecognizeEventType(string message)
         {

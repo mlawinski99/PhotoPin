@@ -115,8 +115,19 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeletePost([FromBody] PostIdDto postModel)
         {
-            var post = await _postRepository.GetPostById(postModel.Id);
-            if (post == null)
+			var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+
+			if (userSub == null)
+				return NotFound();
+
+			var user = await _userRepository.GetUserByExternalId(userSub);
+
+			if (user == null)
+				return NotFound();
+
+			var post = await _postRepository.GetPostById(postModel.Id);
+
+            if (post == null || post.User != user)
                 return NotFound();
 
             _postRepository.DeletePost(post);

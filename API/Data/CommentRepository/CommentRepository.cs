@@ -30,20 +30,6 @@ namespace API.Data.CommentRepository
             return await _dbContext.Comments.FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task<List<Comment>> GetCommentsForPost(int postId)
-        {
-            return await _dbContext.Comments
-                .AsNoTracking()
-                .Where(c => c.Post.Id == postId)
-                .ToListAsync();
-        }
 
-        public async Task<Comment> UpdateComment(Comment comment)
-        {
-            _dbContext.Attach(comment);
-            _dbContext.Entry(comment).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
-            return comment;
-        }
     }
 }

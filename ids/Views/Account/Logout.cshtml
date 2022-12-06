@@ -5,11 +5,14 @@
         <h1>Logout</h1>
         <p>Would you like to logut of IdentityServer?</p>
     </div>
-
+    <div class="row">
     <form asp-action="Logout">
         <input type="hidden" name="logoutId" value="@Model.LogoutId"  />
-        <div class="form-group">
-            <button class="btn btn-primary">Yes</button>
-        </div>
+            <button class="btn btn-primary" >Yes</button>
     </form>
+        <form action="https://localhost:7166/Post">
+            <button class="btn btn-danger">No</button>
+        </form>
+        
+    
 </div>

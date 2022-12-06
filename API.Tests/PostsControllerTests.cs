@@ -14,6 +14,7 @@ using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
@@ -81,7 +82,7 @@ namespace API.Tests
 		}
 
 		//---------------------------------------------------------------------------
-
+		
 
 		[Fact]
 		public async Task GetPostsResultCodeTest()

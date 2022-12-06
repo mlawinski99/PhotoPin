@@ -3,6 +3,7 @@ using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using System.IdentityModel.Tokens.Jwt;
@@ -76,6 +77,12 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseStatusCodePages(async context => {
+	if (context.HttpContext.Response.StatusCode == 404)
+	{
+		 context.HttpContext.Response.Redirect("https://localhost:7166/Home/ErrorPage");
+	}
+});
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

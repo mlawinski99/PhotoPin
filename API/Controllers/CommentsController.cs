@@ -28,13 +28,6 @@ namespace API.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetCommentsForPost(int postId)
-        {
-            var comments = await _commentRepository.GetCommentsForPost(postId);
-
-            return Ok(_mapper.Map<IEnumerable<CommentReadDto>>(comments));
-        }
 
         [HttpPost]
         public async Task<IActionResult> CreateComment([FromBody]CommentCreateDto commentDto)
@@ -55,11 +48,21 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeletePost(int id)
+        public async Task<ActionResult> DeleteComment(int id)
         {
-            var comment = await _commentRepository.GetCommentById(id);
+			var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
 
-            if (comment == null)
+			if (userSub == null)
+				return NotFound();
+
+			var user = await _userRepository.GetUserByExternalId(userSub);
+
+            if (user == null)
+                return NotFound();
+
+			var comment = await _commentRepository.GetCommentById(id);
+
+            if (comment == null || comment.Post.UserId != user.Id)
                 return NotFound();
 
             _commentRepository.DeleteComment(comment);

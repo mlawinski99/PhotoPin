@@ -18,6 +18,17 @@ namespace API.Data.FavouritePostsRepository
             return post;
         }
 
+        public void Delete(int postId)
+        {
+            List<FavouritePost> posts = _dbContext.FavouritePosts.Where(p => p.PostId == postId).ToList();
+            if (posts.Any())
+            {
+                foreach (var post in posts)
+                    _dbContext.FavouritePosts.Remove(post);
+                _dbContext.SaveChanges();
+            }
+        }
+
         public async Task<FavouritePost> GetFavouritePost(int postId, int userId)
         {
             return await _dbContext.FavouritePosts

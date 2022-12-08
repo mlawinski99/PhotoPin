@@ -1,12 +1,40 @@
 {
   "Files": [
     {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\07bd9141-1e23-4656-acce-6d58f901ebd9_3.jpeg",
+      "PackagePath": "staticwebassets\\images\\07bd9141-1e23-4656-acce-6d58f901ebd9_3.jpeg"
+    },
+    {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\099322e1-6448-471f-b2fe-2f68c8178f1f_4.jpg",
+      "PackagePath": "staticwebassets\\images\\099322e1-6448-471f-b2fe-2f68c8178f1f_4.jpg"
+    },
+    {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\1412f004-e266-4f14-a997-77690279c2fb_3.jpeg",
+      "PackagePath": "staticwebassets\\images\\1412f004-e266-4f14-a997-77690279c2fb_3.jpeg"
+    },
+    {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\445fa436-aa46-4d8f-8e21-e0035e1d3e8d_3.jpeg",
+      "PackagePath": "staticwebassets\\images\\445fa436-aa46-4d8f-8e21-e0035e1d3e8d_3.jpeg"
+    },
+    {
       "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\4f25423d-c882-4665-8b0c-9289eeffa0e0_fenix.png",
       "PackagePath": "staticwebassets\\images\\4f25423d-c882-4665-8b0c-9289eeffa0e0_fenix.png"
     },
     {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\538b20a8-feb8-47a4-bf1c-88513fe1d5f9_3.jpeg",
+      "PackagePath": "staticwebassets\\images\\538b20a8-feb8-47a4-bf1c-88513fe1d5f9_3.jpeg"
+    },
+    {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\598b21d6-45b5-4da6-aaf9-328d7a916b4c_3.jpeg",
+      "PackagePath": "staticwebassets\\images\\598b21d6-45b5-4da6-aaf9-328d7a916b4c_3.jpeg"
+    },
+    {
       "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\8a2d02d1-7cf6-451d-abf8-dd1195caea8b_2.jpg",
       "PackagePath": "staticwebassets\\images\\8a2d02d1-7cf6-451d-abf8-dd1195caea8b_2.jpg"
+    },
+    {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\a11e45ac-a13f-4274-863a-bed0085bbfcb_3.jpeg",
+      "PackagePath": "staticwebassets\\images\\a11e45ac-a13f-4274-863a-bed0085bbfcb_3.jpeg"
     },
     {
       "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\ae1c7c94-7549-46d6-ad47-c1e5406dcb69_4.jpg",
@@ -17,8 +45,16 @@
       "PackagePath": "staticwebassets\\images\\c5c96c87-0d58-408c-9791-89071beca4ad_3.jpeg"
     },
     {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\d7f10a26-90aa-43a0-9906-0082dd1f65b5_3.jpeg",
+      "PackagePath": "staticwebassets\\images\\d7f10a26-90aa-43a0-9906-0082dd1f65b5_3.jpeg"
+    },
+    {
       "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\e64def95-e885-444a-8b49-b3e637888fa9_2.jpg",
       "PackagePath": "staticwebassets\\images\\e64def95-e885-444a-8b49-b3e637888fa9_2.jpg"
+    },
+    {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\fd6543f0-c768-40e3-8693-60b62f7e457b_2.jpg",
+      "PackagePath": "staticwebassets\\images\\fd6543f0-c768-40e3-8693-60b62f7e457b_2.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props",

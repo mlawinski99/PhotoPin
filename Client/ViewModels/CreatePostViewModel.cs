@@ -8,5 +8,6 @@ namespace Client.ViewModels
         public IFormFile Image { get; set; }
 		[Required]
 		public string Description { get; set; }
+        public string userId { get; set; }
     }
 }

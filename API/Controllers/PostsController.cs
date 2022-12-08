@@ -1,4 +1,5 @@
-﻿using API.Data.PostRepo;
+﻿using API.Data.FavouritePostsRepository;
+using API.Data.PostRepo;
 using API.Data.PostRepository;
 using API.Data.UserRepo;
 using API.Data.UserRepository;
@@ -24,13 +25,15 @@ namespace API.Controllers
         private readonly IPostRepository _postRepository;
         private readonly IUserRepository _userRepository;
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IFavouritePostsRepository _favouritePostsRepository;
 
-        public PostsController(IMapper mapper, IPostRepository postRepository, IUserRepository userRepository, IHostingEnvironment hostingEnvironment)
+        public PostsController(IMapper mapper, IPostRepository postRepository, IUserRepository userRepository, IHostingEnvironment hostingEnvironment, IFavouritePostsRepository favouritePosts)
         {
             _mapper = mapper;
             _postRepository = postRepository;
             _userRepository = userRepository;
             _hostingEnvironment = hostingEnvironment;
+            _favouritePostsRepository = favouritePosts;
         }
 
         [HttpGet("{id}")]
@@ -41,7 +44,7 @@ namespace API.Controllers
             if (post == null)
                 return NotFound();
 
-            return Ok(_mapper.Map<PostReadDto>(post));
+                return Ok(_mapper.Map<PostReadDto>(post));
         }
 
 
@@ -54,16 +57,16 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Route("user")]
-        public async Task<IActionResult> GetPostsForUser()
+        [Route("user/{userId}")]
+        public async Task<IActionResult> GetPostsForUser(string userId)
         {
 
-            var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            //var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
 
-            if (userSub == null)
+            if (userId == null)
                 return NotFound();
 
-            var user = await _userRepository.GetUserByExternalId(userSub);
+            var user = await _userRepository.GetUserByExternalId(userId);
 
             if (user == null)
                 return NotFound();
@@ -78,12 +81,12 @@ namespace API.Controllers
         {
             var post = _mapper.Map<Post>(postDto);
 
-            var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            //var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
 
-            if (userSub == null)
+            if (postDto.userId == null)
                 return NotFound();
 
-            var user = await _userRepository.GetUserByExternalId(userSub);
+            var user = await _userRepository.GetUserByExternalId(postDto.userId);
 
             if (user == null)
                 return NotFound();
@@ -99,7 +102,7 @@ namespace API.Controllers
 
             post.CreatedDate = DateTime.Now;
             post.UserId = user.Id;
-            post.User = user;
+           // post.User = user;
             post.ImagePath = imagePath;
 
             await _postRepository.AddPost(post);
@@ -112,24 +115,24 @@ namespace API.Controllers
                 }, createdPost);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete()]
         public async Task<ActionResult> DeletePost([FromBody] PostIdDto postModel)
         {
-			var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
 
-			if (userSub == null)
+			if (postModel.userId == null)
 				return NotFound();
 
-			var user = await _userRepository.GetUserByExternalId(userSub);
+			var user = await _userRepository.GetUserByExternalId(postModel.userId);
 
 			if (user == null)
 				return NotFound();
 
-			var post = await _postRepository.GetPostById(postModel.Id);
+			var post = await _postRepository.GetPostById(postModel.id);
 
-            if (post == null || post.User != user)
+            if (post == null || post.User.Id != user.Id)
                 return NotFound();
 
+            _favouritePostsRepository.Delete(post.Id);
             _postRepository.DeletePost(post);
 
             return NoContent();

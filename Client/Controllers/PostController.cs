@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 
 namespace Client.Controllers
 {
@@ -116,12 +117,12 @@ namespace Client.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreatePostViewModel model)
         {
-
-            if (ModelState.IsValid)
+            model.userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            if (model.userId != null && model.Image != null && model.Description != null)
             {
                 var httpClient = _httpClientFactory.CreateClient("APIClient");
 
-
+                
                 byte[] data;
                 using (var br = new BinaryReader(model.Image.OpenReadStream()))
                 {
@@ -132,8 +133,11 @@ namespace Client.Controllers
                 multiContent.Add(bytes, "Image", model.Image.FileName);
                 multiContent.Add(new StringContent(model.Description), "Description" +
                     "");
-
-
+                 multiContent.Add(new StringContent(model.userId), "userId" +
+                      "");
+                //var userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+                var test = multiContent;
+                var test2 = multiContent;
                 var response = await httpClient.PostAsync("/api/posts", multiContent);
                 Console.WriteLine(response.StatusCode);
                 return RedirectToAction("Index", "Home");
@@ -220,7 +224,7 @@ namespace Client.Controllers
 
 			var request = new HttpRequestMessage(
 				HttpMethod.Delete,
-				$"/api/posts/{id}");
+				$"/api/posts");
 
 			request.Content = JsonContent.Create(new { id = id, userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value});
 

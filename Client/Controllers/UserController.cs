@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Newtonsoft.Json;
 using System.Net.Http;
+using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace Client.Controllers
 {
@@ -23,11 +24,10 @@ namespace Client.Controllers
         public async Task<IActionResult> MyProfile()
         {
             var httpClient = _httpClientFactory.CreateClient("APIClient");
-
+            var userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
             var request = new HttpRequestMessage(
                 HttpMethod.Get,
-                "/api/posts/user");
-
+                $"/api/posts/user/{userId}");
             var response = await httpClient.SendAsync(
                 request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 

@@ -34,11 +34,11 @@ namespace API.Controllers
             if (user == null)
                 return BadRequest();
 
-            var post = await _favouritePostsRepository.GetFavouritePost(postModel.Id, user.Id);
+            var post = await _favouritePostsRepository.GetFavouritePost(postModel.id, user.Id);
 
             if (post == null)
             {
-                FavouritePost favouritePost = new FavouritePost { PostId = postModel.Id, UserId = user.Id };
+                FavouritePost favouritePost = new FavouritePost { PostId = postModel.id, UserId = user.Id };
                 await _favouritePostsRepository.AddToFavourite(favouritePost);
                 return NoContent();
             }

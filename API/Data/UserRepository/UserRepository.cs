@@ -28,7 +28,9 @@ namespace API.Data.UserRepository
 
         public async Task<User> GetUserByExternalId(string id)
         {
-            return await _dbContext.Users.FirstOrDefaultAsync(u => u.ExternalId == id);
+            return await _dbContext.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.ExternalId == id);
         }
 
         public async Task<User> GetUserByUserName(string userName)

@@ -37,11 +37,12 @@ namespace Client.Controllers
 
             var responsePosts = await httpClient.SendAsync(
                 requestPosts, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
-
+            Thread.Sleep(100);
+            var userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
             var requestFavourites = new HttpRequestMessage(
                 HttpMethod.Get,
-                "/api/favourite");
-
+                $"/api/favourite");
+            requestFavourites.Content = JsonContent.Create(new {userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value });
             var responseFavourites = await httpClient.SendAsync(
                 requestFavourites, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
@@ -90,8 +91,8 @@ namespace Client.Controllers
 
             var request = new HttpRequestMessage(
                 HttpMethod.Get,
-                "/api/favourite");
-
+                $"/api/favourite");
+            request.Content = JsonContent.Create(new { userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value });
             var response = await httpClient.SendAsync(
                 request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
@@ -204,24 +205,13 @@ namespace Client.Controllers
                 HttpMethod.Post,
                 $"/api/favourite");
 
-            request.Content = JsonContent.Create(new { id = id});
+            request.Content = JsonContent.Create(new { id = id, userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value });
 
             var response = await httpClient.SendAsync(
                 request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
             return RedirectToAction("Index", "Home");
-
-            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized ||
-                    response.StatusCode == System.Net.HttpStatusCode.Forbidden)
-            {
-                return RedirectToAction("ErrorPage", "Home");
-            }
-
-            throw new Exception("Can't connect to API");
-
-            //var postList = new List<Post>();
-            //return View(postList);
         }
 
 		public async Task<IActionResult> Delete(int id)

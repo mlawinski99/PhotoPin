@@ -28,8 +28,11 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddRemoveFavourites([FromBody] PostIdDto postModel)
         {
-            var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
-            var user = await _userRepository.GetUserByExternalId(userSub);
+            //var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            
+            var user = await _userRepository.GetUserByExternalId(postModel.userId);
+            if (user == null)
+                return BadRequest();
 
             var post = await _favouritePostsRepository.GetFavouritePost(postModel.Id, user.Id);
 
@@ -45,11 +48,14 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetFavourites()
+        public async Task<IActionResult> GetFavourites([FromBody] PostIdDto post)
         {
-            var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+           // var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
             Thread.Sleep(100);
-            var user = await _userRepository.GetUserByExternalId(userSub);
+            var user = await _userRepository.GetUserByExternalId(post.userId);
+
+            if (user == null)
+                return BadRequest();
 
             var favouritePosts = await _favouritePostsRepository.GetFavouritePostsForUser(user.Id);
 

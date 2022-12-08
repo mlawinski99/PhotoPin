@@ -32,12 +32,13 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateComment([FromBody]CommentCreateDto commentDto)
         {
-			var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            //var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+            if (commentDto.userId == null)
+                return BadRequest();
 
-			if (userSub == null)
-				return NotFound();
-
-			var user = await _userRepository.GetUserByExternalId(userSub);
+            var user = await _userRepository.GetUserByExternalId(commentDto.userId);
+            if (user == null)
+                return BadRequest();
 
 			var comment = _mapper.Map<Comment>(commentDto);
             comment.CreatedDate= DateTime.Now;
@@ -48,14 +49,14 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteComment(int id)
+        public async Task<ActionResult> DeleteComment(int id, [FromBody]string userId)
         {
-			var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
+			//var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
 
-			if (userSub == null)
+			if (userId == null)
 				return NotFound();
 
-			var user = await _userRepository.GetUserByExternalId(userSub);
+			var user = await _userRepository.GetUserByExternalId(userId);
 
             if (user == null)
                 return NotFound();

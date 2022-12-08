@@ -177,7 +177,7 @@ namespace Client.Controllers
             var request = new HttpRequestMessage(
                 HttpMethod.Post,
                 $"api/comments");
-            request.Content = JsonContent.Create(new { postId = id, text = addComment });
+            request.Content = JsonContent.Create(new { postId = id, text = addComment, userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value });
 
 			//Console.WriteLine(request.Content.Headers);
 			var response = await httpClient.SendAsync(
@@ -232,7 +232,7 @@ namespace Client.Controllers
 				HttpMethod.Delete,
 				$"/api/posts/{id}");
 
-			request.Content = JsonContent.Create(new { id = id });
+			request.Content = JsonContent.Create(new { id = id, userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value});
 
 			var response = await httpClient.SendAsync(
 				request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);

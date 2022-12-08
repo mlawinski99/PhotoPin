@@ -11,9 +11,8 @@ namespace API.Mapping.Profiles
         {
             //source -> dest
             CreateMap<CommentCreateDto, Comment>();
-            CreateMap<CommentUpdateDto, Comment>(); 
-            CreateMap<Comment, CommentReadDto>()
-                .ForMember(c => c.UserName, p => p.MapFrom(p => p.Post.User.UserName));
+            CreateMap<CommentUpdateDto, Comment>();
+            CreateMap<Comment, CommentReadDto>();
         }
     }
 }

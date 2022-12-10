@@ -11,7 +11,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
-	<form class="p-2" method="post" asp-action="UserProfile" asp-controller="User">
+	<form class="p-2" method="post" asp-action="UserProfile" asp-controller="User" style="width:78%;">
 		<div class="input-group">
 			<input type="text" class="form-control" placeholder="Search user" id="userName" name="userName"> 
 				<button type="submit" style="margin-left:auto;" class="btn btn-light"><i class="fa fa-search"></i></button>
@@ -24,8 +24,8 @@
 					@foreach (var post in Model.Posts)
 					{
 						<div class="col-md-4 ">
-							<figure class="card card-product-grid d-flex align-items-start flex-column" style="height: 100%;">
-								<div class="fix-height mb-2 p-2">
+							<figure class="card card-product-grid d-flex align-items-start flex-column" style="height: 100%;width:100%;">
+								<div class="fix-height mb-2 p-2" style="margin: 1%;">
 										<div class="text-lg-left">Posted by: @post.UserName</div>
 									</div>
 								<div class="img-wrap mb-auto p-2">

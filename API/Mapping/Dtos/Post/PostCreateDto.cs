@@ -6,7 +6,9 @@ namespace API.Mapping.Dtos.Post
     {
         [Required]
         public IFormFile Image { get; set; }
+        [Required]
         public string Description { get; set; }
+        [Required]
         public string userId { get; set; }
     }
 }

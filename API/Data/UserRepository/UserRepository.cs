@@ -26,14 +26,14 @@ namespace API.Data.UserRepository
            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
         }
 
-        public async Task<User> GetUserByExternalId(string id)
+        public async Task<User?> GetUserByExternalId(string id)
         {
             return await _dbContext.Users
                 .AsNoTracking()
                 .FirstOrDefaultAsync(u => u.ExternalId == id);
         }
 
-        public async Task<User> GetUserByUserName(string userName)
+        public async Task<User?> GetUserByUserName(string userName)
         {
             return await _dbContext.Users
                 .Where(u => u.UserName == userName)

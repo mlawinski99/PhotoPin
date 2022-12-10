@@ -33,8 +33,8 @@ namespace API.Controllers
         public async Task<IActionResult> CreateComment([FromBody]CommentCreateDto commentDto)
         {
             //var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
-            if (commentDto.userId == null)
-                return BadRequest();
+           // if (commentDto.userId == null)
+           //     return BadRequest();
 
             var user = await _userRepository.GetUserByExternalId(commentDto.userId);
             if (user == null)
@@ -63,7 +63,7 @@ namespace API.Controllers
 
 			var comment = await _commentRepository.GetCommentById(id);
 
-            if (comment == null || comment.Post.UserId != user.Id)
+            if (comment == null || comment.UserName != user.UserName)
                 return NotFound();
 
             _commentRepository.DeleteComment(comment);

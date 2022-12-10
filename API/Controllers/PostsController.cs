@@ -83,15 +83,15 @@ namespace API.Controllers
 
             //var userSub = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
 
-            if (postDto.userId == null)
-                return NotFound();
+           // if (postDto.userId == null)
+           //     return NotFound();
 
             var user = await _userRepository.GetUserByExternalId(postDto.userId);
 
             if (user == null)
                 return NotFound();
 
-            if (postDto.Image == null || postDto.Image.Length == 0)
+            if (postDto.Image.Length == 0)
                 return NotFound();
 
 
@@ -119,8 +119,8 @@ namespace API.Controllers
         public async Task<ActionResult> DeletePost([FromBody] PostIdDto postModel)
         {
 
-			if (postModel.userId == null)
-				return NotFound();
+		//	if (postModel.userId == null)
+		//		return NotFound();
 
 			var user = await _userRepository.GetUserByExternalId(postModel.userId);
 
@@ -129,8 +129,8 @@ namespace API.Controllers
 
 			var post = await _postRepository.GetPostById(postModel.id);
 
-            if (post == null || post.User.Id != user.Id)
-                return NotFound();
+            if (post == null || post.UserId != user.Id)
+                return BadRequest();
 
             _favouritePostsRepository.Delete(post.Id);
             _postRepository.DeletePost(post);

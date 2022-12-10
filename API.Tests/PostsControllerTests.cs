@@ -4,7 +4,9 @@ using API.Mapping.Dtos.User;
 using API.Mapping.Profiles;
 using API.Models;
 using AutoMapper;
+using AutoMapper.Internal;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
@@ -27,6 +29,7 @@ namespace API.Tests
 		private readonly IMapper _mapper;
 		private readonly UserRepositoryFake _userRepository;
 		private readonly PostsRepositoryFake _postsRepository;
+		private readonly FavouriteRepositoryFake _favouriteRepository;
 		private readonly PostsController _postsController;
 		public PostsControllerTests()
 		{
@@ -38,15 +41,19 @@ namespace API.Tests
 			});
 
 			var mockEnvironment = new Mock<IHostingEnvironment>();
-
-			mockEnvironment
+            mockEnvironment
+				.Setup(m => m.WebRootPath)
+				.Returns("D:\\Projekty\\PhotoPin\\API\\wwwroot\\");
+            mockEnvironment
 			.Setup(m => m.EnvironmentName)
 			.Returns("Hosting:UnitTestEnvironment");
 
-			_mapper = config.CreateMapper();
+			
+            _mapper = config.CreateMapper();
 			_userRepository = new UserRepositoryFake();
 			_postsRepository = new PostsRepositoryFake();
-			_postsController = new PostsController(_mapper,_postsRepository, _userRepository, mockEnvironment.Object);
+			_favouriteRepository = new FavouriteRepositoryFake();
+			_postsController = new PostsController(_mapper, _postsRepository, _userRepository, mockEnvironment.Object, _favouriteRepository);
 		}
 
 		[Fact]
@@ -82,7 +89,7 @@ namespace API.Tests
 		}
 
 		//---------------------------------------------------------------------------
-		
+
 
 		[Fact]
 		public async Task GetPostsResultCodeTest()
@@ -93,53 +100,90 @@ namespace API.Tests
 			Assert.IsType<OkObjectResult>(okResult as OkObjectResult);
 		}
 
+		//---------------------------------------------------------------------------
 		[Fact]
-		public async Task GetPosts()
+		public async Task GetPostsForUserNotFound()
 		{
-			var result = await _postsController.GetPosts() as OkObjectResult;
+			var notFoundResult = await _postsController.GetPostsForUser("33704c4a - 5b87 - 464c - bfb6 - 51971b4d18adas");
 
-			Assert.IsType<OkObjectResult>(result);
-
+			Assert.IsType<NotFoundResult>(notFoundResult);
 		}
 
-		//---------------------------------------------------------------------------
-
 		[Fact]
-		public async Task GetPostsUser()
+		public async Task GetPostsForUser()
 		{
 			int userId = 1;
 
-			var posts = await _postsRepository.GetPostsForUser(userId);
+			var user = await _userRepository.GetUser(userId);
+			var okResult = await _postsController.GetPostsForUser(user.ExternalId);
 
-			Assert.Equal(2, posts.Count);
+			Assert.IsType<OkObjectResult>(okResult as OkObjectResult);
 		}
 
 		//---------------------------------------------------------------------------
+		[Fact]
+		public async Task CreatePostInvalidUser()
+        {
+            var bytes = Encoding.UTF8.GetBytes("test");
+            IFormFile file = new FormFile(new MemoryStream(bytes), 0, bytes.Length, "test", "test.jpg");
+
+            var newPost = new PostCreateDto { Description = "desc", Image=file, userId = "33704c4a-5b87-464c-bfb6-51971b4d18adaga" };
+			var notFoundResult = await _postsController.CreatePost(newPost);
+
+			Assert.IsType<NotFoundResult>(notFoundResult);
+        }
 
 		[Fact]
-		public async Task CreatePost()
+		public async Task CreatePostEmptyImage()
 		{
-			var post = new Post { Id = 4, UserId = 1, Description = "description", ImagePath = "ae1c7c94-7549-46d6-ad47-c1e5406dcb69_4.jpg", CreatedDate = DateTime.Now };
+            var bytes = Encoding.UTF8.GetBytes("");
+            IFormFile file = new FormFile(new MemoryStream(bytes), 0, bytes.Length, "test", "test.jpg");
 
-			var createdPost = await _postsRepository.AddPost(post);
+            var newPost = new PostCreateDto { Description = "desc", Image = file, userId = "33704c4a-5b87-464c-bfb6-51971b4d18adaga" };
+            var notFoundResult = await _postsController.CreatePost(newPost);
 
-			Assert.Equal(post, createdPost);
+            Assert.IsType<NotFoundResult>(notFoundResult);
+        }
+
+        [Fact]
+        public async Task CreatePostValidData()
+        {
+            var bytes = Encoding.UTF8.GetBytes("gdsgsdgdsgsdg");
+            IFormFile file = new FormFile(new MemoryStream(bytes), 0, bytes.Length, "test", "test.jpg");
+
+            var newPost = new PostCreateDto { Description = "desc", Image = file, userId = "815accac-fd5b-478a-a9d6-f171a2f6ae7f" };
+            var CreatedResult = await _postsController.CreatePost(newPost);
+
+            Assert.IsType<CreatedAtRouteResult>(CreatedResult);
+        }
+
+        //---------------------------------------------------------------------------
+
+        [Fact]
+		public async Task DeletePostNotFoundUser()
+		{
+			var postIdDto = new PostIdDto { id = 1, userId = "33704c4a - 5b87 - 464c - bfb6 - 51971b4d18adas" };
+			var notFoundResult = await _postsController.DeletePost(postIdDto);
+
+			Assert.IsType<NotFoundResult>(notFoundResult);
 		}
 
-		//---------------------------------------------------------------------------
+		[Fact]
+		public async Task DeletePostNotFoundPostForUser()
+		{
+			var postIdDto = new PostIdDto { id = 1, userId = "815accac-fd5b-478a-a9d6-f171a2f6ae7f" };
+			var badRequestResult = await _postsController.DeletePost(postIdDto);
+
+			Assert.IsType<BadRequestResult>(badRequestResult);
+		}
 
 		[Fact]
-		public async Task DeletePost()
+		public async Task DeletePostTest()
 		{
-			int postId = 1;
+			var postIdDto = new PostIdDto { id = 1, userId = "ab2bd817-98cd-4cf3-a80a-53ea0cd9c200" };
+			var noContent = await _postsController.DeletePost(postIdDto);
 
-			var post = await _postsRepository.GetPostById(postId);
-
-			_postsRepository.DeletePost(post);
-
-			var postAfterDelete = await _postsRepository.GetPostById(postId);
-
-			Assert.Null(postAfterDelete);
+			Assert.IsType<NoContentResult>(noContent);
 		}
 	}
 }

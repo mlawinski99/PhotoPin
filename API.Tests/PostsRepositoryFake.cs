@@ -10,7 +10,7 @@ namespace API.Tests
 {
 	public class PostsRepositoryFake : IPostRepository
 	{
-		private readonly List<Post> posts;
+		public readonly List<Post> posts;
 		public PostsRepositoryFake()
 		{
 			posts = new List<Post>()

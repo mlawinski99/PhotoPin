@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\03a8b3ea-3d58-46f0-82d1-987a18211968_3.jpeg",
+      "PackagePath": "staticwebassets\\images\\03a8b3ea-3d58-46f0-82d1-987a18211968_3.jpeg"
+    },
+    {
       "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\07bd9141-1e23-4656-acce-6d58f901ebd9_3.jpeg",
       "PackagePath": "staticwebassets\\images\\07bd9141-1e23-4656-acce-6d58f901ebd9_3.jpeg"
     },
@@ -25,6 +29,10 @@
       "PackagePath": "staticwebassets\\images\\538b20a8-feb8-47a4-bf1c-88513fe1d5f9_3.jpeg"
     },
     {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\58db8568-309e-428a-b43f-6bf6a5399401_3.jpeg",
+      "PackagePath": "staticwebassets\\images\\58db8568-309e-428a-b43f-6bf6a5399401_3.jpeg"
+    },
+    {
       "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\598b21d6-45b5-4da6-aaf9-328d7a916b4c_3.jpeg",
       "PackagePath": "staticwebassets\\images\\598b21d6-45b5-4da6-aaf9-328d7a916b4c_3.jpeg"
     },
@@ -41,6 +49,10 @@
       "PackagePath": "staticwebassets\\images\\ae1c7c94-7549-46d6-ad47-c1e5406dcb69_4.jpg"
     },
     {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\bd179d44-d87c-49b9-8eb2-f0020daa9669_test.jpg",
+      "PackagePath": "staticwebassets\\images\\bd179d44-d87c-49b9-8eb2-f0020daa9669_test.jpg"
+    },
+    {
       "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\c5c96c87-0d58-408c-9791-89071beca4ad_3.jpeg",
       "PackagePath": "staticwebassets\\images\\c5c96c87-0d58-408c-9791-89071beca4ad_3.jpeg"
     },
@@ -51,6 +63,10 @@
     {
       "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\e64def95-e885-444a-8b49-b3e637888fa9_2.jpg",
       "PackagePath": "staticwebassets\\images\\e64def95-e885-444a-8b49-b3e637888fa9_2.jpg"
+    },
+    {
+      "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\f21385ff-e8d2-4016-9346-90b13c16e623_test.jpg",
+      "PackagePath": "staticwebassets\\images\\f21385ff-e8d2-4016-9346-90b13c16e623_test.jpg"
     },
     {
       "Id": "D:\\Projekty\\PhotoPin\\API\\wwwroot\\images\\fd6543f0-c768-40e3-8693-60b62f7e457b_2.jpg",

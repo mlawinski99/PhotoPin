@@ -135,9 +135,7 @@ namespace Client.Controllers
                     "");
                  multiContent.Add(new StringContent(model.userId), "userId" +
                       "");
-                //var userId = User.Claims.FirstOrDefault(c => c.Type == "sub")?.Value;
-                var test = multiContent;
-                var test2 = multiContent;
+
                 var response = await httpClient.PostAsync("/api/posts", multiContent);
                 Console.WriteLine(response.StatusCode);
                 return RedirectToAction("Index", "Home");

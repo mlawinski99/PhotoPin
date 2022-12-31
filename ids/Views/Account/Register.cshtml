@@ -6,9 +6,9 @@
                 <div class="card-header">
                     <h2>Local Account</h2>
                 </div>
-
+            
                 <div class="card-body">
-                <form aasp-controller="Account" asp-action="Register" method="post">
+                <form asp-controller="Account" asp-action="Register" method="post">
                     <input type="hidden" asp-for="ReturnUrl" />
 
                         <div class="form-group">
@@ -27,12 +27,15 @@
                         <label asp-for="ConfirmPassword"></label>
                         <input type="password" class="form-control" placeholder="ConfirmPassword" asp-for="ConfirmPassword" autocomplete="off">
                     </div>
+                    <div class="row">
                         <button class="btn btn-primary" name="button" value="Register">Register</button>
-                    <input type="submit" class="btn btn-secondary" asp-controller="Account" asp-action="Login"
-                       asp-route-returnUrl="@Model.ReturnUrl" value="Cancel"></input>
-         
-                    </form>
+                        </form>
+                        <form action="https://localhost:7166">
+                    <button class="btn btn-secondary">Cancel</button>
+                </form>
                 </div>
+                    </div>
             </div>
+        </div>
         </div>
 </div>

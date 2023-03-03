@@ -3,7 +3,7 @@
 The format of the application takes on that of a social media platform, which exclusively grants access to registered users. Non-registered individuals are required to either log in or establish an account to gain access to the application's features. Once logged in, users are capable of uploading photos accompanied by descriptions, perusing and adding other users' photos to a "favorites" list, and commenting on specific photos. Users have the ability to remove photos from their "favorites" list or from the website entirely, provided they are the user who posted it.
 
 # Technologies:
-RabbitMQ, xUnit, MS SQL, .NET6, .NET Core 3.1, Identity Server 4, Entity Framework Core
+RabbitMQ, xUnit, MS SQL, .NET6, .NET Core 3.1, Identity Server 4, Entity Framework Core, Ocelot
 
 # Architecture: 
 ![image](https://user-images.githubusercontent.com/56017422/222728728-ec6f2d1f-1e8f-404a-87d6-33bfebcf8c91.png)
